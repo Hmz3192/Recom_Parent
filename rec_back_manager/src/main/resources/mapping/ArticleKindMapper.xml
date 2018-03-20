@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjnu.dao.ArticleKindMapper">
+  <cache type="com.zjnu.redis.RedisCache" />
+
+  <resultMap id="BaseResultMap" type="com.zjnu.model.ArticleKind">
+    <constructor>
+      <idArg column="kind_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="kind_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="kind_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    kind_id, kind_name, kind_number, parent_id
+  </sql>
+  <select id="selectByExample" parameterType="com.zjnu.model.ArticleKindExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from article_kind
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from article_kind
+    where kind_id = #{kindId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from article_kind
+    where kind_id = #{kindId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zjnu.model.ArticleKindExample">
+    delete from article_kind
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zjnu.model.ArticleKind">
+    insert into article_kind (kind_id, kind_name, kind_number, 
+      parent_id)
+    values (#{kindId,jdbcType=BIGINT}, #{kindName,jdbcType=VARCHAR}, #{kindNumber,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjnu.model.ArticleKind">
+    insert into article_kind
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="kindId != null">
+        kind_id,
+      </if>
+      <if test="kindName != null">
+        kind_name,
+      </if>
+      <if test="kindNumber != null">
+        kind_number,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="kindId != null">
+        #{kindId,jdbcType=BIGINT},
+      </if>
+      <if test="kindName != null">
+        #{kindName,jdbcType=VARCHAR},
+      </if>
+      <if test="kindNumber != null">
+        #{kindNumber,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zjnu.model.ArticleKindExample" resultType="java.lang.Long">
+    select count(*) from article_kind
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update article_kind
+    <set>
+      <if test="record.kindId != null">
+        kind_id = #{record.kindId,jdbcType=BIGINT},
+      </if>
+      <if test="record.kindName != null">
+        kind_name = #{record.kindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kindNumber != null">
+        kind_number = #{record.kindNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update article_kind
+    set kind_id = #{record.kindId,jdbcType=BIGINT},
+      kind_name = #{record.kindName,jdbcType=VARCHAR},
+      kind_number = #{record.kindNumber,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjnu.model.ArticleKind">
+    update article_kind
+    <set>
+      <if test="kindName != null">
+        kind_name = #{kindName,jdbcType=VARCHAR},
+      </if>
+      <if test="kindNumber != null">
+        kind_number = #{kindNumber,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where kind_id = #{kindId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjnu.model.ArticleKind">
+    update article_kind
+    set kind_name = #{kindName,jdbcType=VARCHAR},
+      kind_number = #{kindNumber,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER}
+    where kind_id = #{kindId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    {
+      "image": "chenhai.png",
+      "name": "陈海",
+      "id": 9
+    },
+    {
+      "image": "gaoyuliang.png",
+      "name": "高玉良",
+      "id": 4
+    },
+    {
+      "image": "houliangping.png",
+      "name": "侯亮平",
+      "id": 5
+    },
+    {
+      "image": "luyike.png",
+      "name": "陆亦可",
+      "id": 7
+    },
+    {
+      "image": "chenyanshi.png",
+      "name": "陈岩石",
+      "id": 11
+    },
+    {
+      "image": "wangfuzhen.png",
+      "name": "王馥真",
+      "id": 18
+    },
+    {
+      "image": "jichangming.png",
+      "name": "季昌明",
+      "id": 19
+    },
+    {
+      "image": "chenyang.png",
+      "name": "陈阳",
+      "id": 20
+    }
+  ],
+  "links": [
+    {
+      "source": 4,
+      "target": 9,
+      "type": "学生"
+    },
+    {
+      "source": 5,
+      "target": 9,
+      "type": "同学"
+    },
+    {
+      "source": 7,
+      "target": 9,
+      "type": "喜欢"
+    },
+    {
+      "source": 9,
+      "target": 11,
+      "type": "父亲"
+    },
+    {
+      "source": 9,
+      "target": 18,
+      "type": "母亲"
+    },
+    {
+      "source": 9,
+      "target": 19,
+      "type": "上级"
+    },
+    {
+      "source": 9,
+      "target": 20,
+      "type": "姐姐"
+    }
+  ]
+}

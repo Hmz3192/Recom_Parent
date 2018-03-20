@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Recom_Parent.iml" filepath="$PROJECT_DIR$/Recom_Parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_blog/blog_controller/blog_controller.iml" filepath="$PROJECT_DIR$/rec_blog/blog_controller/blog_controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_blog/blog_dao/blog_dao.iml" filepath="$PROJECT_DIR$/rec_blog/blog_dao/blog_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_blog/blog_model/blog_model.iml" filepath="$PROJECT_DIR$/rec_blog/blog_model/blog_model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_blog/blog_service/blog_service.iml" filepath="$PROJECT_DIR$/rec_blog/blog_service/blog_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_back_manager/rec_back_manager.iml" filepath="$PROJECT_DIR$/rec_back_manager/rec_back_manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_blog/rec_blog.iml" filepath="$PROJECT_DIR$/rec_blog/rec_blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_common/rec_common.iml" filepath="$PROJECT_DIR$/rec_common/rec_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_mobile/rec_mobile.iml" filepath="$PROJECT_DIR$/rec_mobile/rec_mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_recom/rec_recom.iml" filepath="$PROJECT_DIR$/rec_recom/rec_recom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_scala/rec_scala.iml" filepath="$PROJECT_DIR$/rec_scala/rec_scala.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rec_search/rec_search.iml" filepath="$PROJECT_DIR$/rec_search/rec_search.iml" />
+    </modules>
+  </component>
+</project>

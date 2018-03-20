@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjnu.dao.ArticleMapper">
+  <cache type="com.zjnu.redis.RedisCache" />
+
+  <resultMap id="BaseResultMap" type="com.zjnu.model.Article">
+    <constructor>
+      <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="article_content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="kind_parent_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="kind_child_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="article_summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_writer" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_source" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_hints" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="release_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_power" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="check_up" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="article_collection" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="article_up" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="article_down" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="article_state" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_avatar" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_big" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="article_first" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="source_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    article_id, article_content, article_title, kind_parent_name, kind_child_name, user_id, 
+    article_summary, article_writer, article_source, article_hints, release_time, article_power, 
+    check_up, article_collection, article_up, article_down, article_state, article_avatar, 
+    article_big, article_first, source_url
+  </sql>
+  <select id="selectByExample" parameterType="com.zjnu.model.ArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByArray" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from article
+    where article_id IN
+    <foreach close=")" collection="array" index="index" item="array" open="(" separator=",">
+      #{array}
+    </foreach>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from article
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from article
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zjnu.model.ArticleExample">
+    delete from article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zjnu.model.Article">
+    insert into article (article_id, article_content, article_title, 
+      kind_parent_name, kind_child_name, user_id, 
+      article_summary, article_writer, article_source, 
+      article_hints, release_time, article_power, 
+      check_up, article_collection, article_up, 
+      article_down, article_state, article_avatar, 
+      article_big, article_first, source_url
+      )
+    values (#{articleId,jdbcType=BIGINT}, #{articleContent,jdbcType=VARCHAR}, #{articleTitle,jdbcType=VARCHAR}, 
+      #{kindParentName,jdbcType=VARCHAR}, #{kindChildName,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{articleSummary,jdbcType=VARCHAR}, #{articleWriter,jdbcType=VARCHAR}, #{articleSource,jdbcType=VARCHAR}, 
+      #{articleHints,jdbcType=INTEGER}, #{releaseTime,jdbcType=VARCHAR}, #{articlePower,jdbcType=VARCHAR}, 
+      #{checkUp,jdbcType=INTEGER}, #{articleCollection,jdbcType=INTEGER}, #{articleUp,jdbcType=INTEGER}, 
+      #{articleDown,jdbcType=INTEGER}, #{articleState,jdbcType=VARCHAR}, #{articleAvatar,jdbcType=VARCHAR}, 
+      #{articleBig,jdbcType=INTEGER}, #{articleFirst,jdbcType=INTEGER}, #{sourceUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjnu.model.Article">
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="articleContent != null">
+        article_content,
+      </if>
+      <if test="articleTitle != null">
+        article_title,
+      </if>
+      <if test="kindParentName != null">
+        kind_parent_name,
+      </if>
+      <if test="kindChildName != null">
+        kind_child_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="articleSummary != null">
+        article_summary,
+      </if>
+      <if test="articleWriter != null">
+        article_writer,
+      </if>
+      <if test="articleSource != null">
+        article_source,
+      </if>
+      <if test="articleHints != null">
+        article_hints,
+      </if>
+      <if test="releaseTime != null">
+        release_time,
+      </if>
+      <if test="articlePower != null">
+        article_power,
+      </if>
+      <if test="checkUp != null">
+        check_up,
+      </if>
+      <if test="articleCollection != null">
+        article_collection,
+      </if>
+      <if test="articleUp != null">
+        article_up,
+      </if>
+      <if test="articleDown != null">
+        article_down,
+      </if>
+      <if test="articleState != null">
+        article_state,
+      </if>
+      <if test="articleAvatar != null">
+        article_avatar,
+      </if>
+      <if test="articleBig != null">
+        article_big,
+      </if>
+      <if test="articleFirst != null">
+        article_first,
+      </if>
+      <if test="sourceUrl != null">
+        source_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="articleContent != null">
+        #{articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="kindParentName != null">
+        #{kindParentName,jdbcType=VARCHAR},
+      </if>
+      <if test="kindChildName != null">
+        #{kindChildName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="articleSummary != null">
+        #{articleSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="articleWriter != null">
+        #{articleWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSource != null">
+        #{articleSource,jdbcType=VARCHAR},
+      </if>
+      <if test="articleHints != null">
+        #{articleHints,jdbcType=INTEGER},
+      </if>
+      <if test="releaseTime != null">
+        #{releaseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="articlePower != null">
+        #{articlePower,jdbcType=VARCHAR},
+      </if>
+      <if test="checkUp != null">
+        #{checkUp,jdbcType=INTEGER},
+      </if>
+      <if test="articleCollection != null">
+        #{articleCollection,jdbcType=INTEGER},
+      </if>
+      <if test="articleUp != null">
+        #{articleUp,jdbcType=INTEGER},
+      </if>
+      <if test="articleDown != null">
+        #{articleDown,jdbcType=INTEGER},
+      </if>
+      <if test="articleState != null">
+        #{articleState,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAvatar != null">
+        #{articleAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="articleBig != null">
+        #{articleBig,jdbcType=INTEGER},
+      </if>
+      <if test="articleFirst != null">
+        #{articleFirst,jdbcType=INTEGER},
+      </if>
+      <if test="sourceUrl != null">
+        #{sourceUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zjnu.model.ArticleExample" resultType="java.lang.Long">
+    select count(*) from article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update article
+    <set>
+      <if test="record.articleId != null">
+        article_id = #{record.articleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.articleContent != null">
+        article_content = #{record.articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleTitle != null">
+        article_title = #{record.articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kindParentName != null">
+        kind_parent_name = #{record.kindParentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kindChildName != null">
+        kind_child_name = #{record.kindChildName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.articleSummary != null">
+        article_summary = #{record.articleSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleWriter != null">
+        article_writer = #{record.articleWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleSource != null">
+        article_source = #{record.articleSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleHints != null">
+        article_hints = #{record.articleHints,jdbcType=INTEGER},
+      </if>
+      <if test="record.releaseTime != null">
+        release_time = #{record.releaseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articlePower != null">
+        article_power = #{record.articlePower,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkUp != null">
+        check_up = #{record.checkUp,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleCollection != null">
+        article_collection = #{record.articleCollection,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleUp != null">
+        article_up = #{record.articleUp,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleDown != null">
+        article_down = #{record.articleDown,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleState != null">
+        article_state = #{record.articleState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleAvatar != null">
+        article_avatar = #{record.articleAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleBig != null">
+        article_big = #{record.articleBig,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleFirst != null">
+        article_first = #{record.articleFirst,jdbcType=INTEGER},
+      </if>
+      <if test="record.sourceUrl != null">
+        source_url = #{record.sourceUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update article
+    set article_id = #{record.articleId,jdbcType=BIGINT},
+      article_content = #{record.articleContent,jdbcType=VARCHAR},
+      article_title = #{record.articleTitle,jdbcType=VARCHAR},
+      kind_parent_name = #{record.kindParentName,jdbcType=VARCHAR},
+      kind_child_name = #{record.kindChildName,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      article_summary = #{record.articleSummary,jdbcType=VARCHAR},
+      article_writer = #{record.articleWriter,jdbcType=VARCHAR},
+      article_source = #{record.articleSource,jdbcType=VARCHAR},
+      article_hints = #{record.articleHints,jdbcType=INTEGER},
+      release_time = #{record.releaseTime,jdbcType=VARCHAR},
+      article_power = #{record.articlePower,jdbcType=VARCHAR},
+      check_up = #{record.checkUp,jdbcType=INTEGER},
+      article_collection = #{record.articleCollection,jdbcType=INTEGER},
+      article_up = #{record.articleUp,jdbcType=INTEGER},
+      article_down = #{record.articleDown,jdbcType=INTEGER},
+      article_state = #{record.articleState,jdbcType=VARCHAR},
+      article_avatar = #{record.articleAvatar,jdbcType=VARCHAR},
+      article_big = #{record.articleBig,jdbcType=INTEGER},
+      article_first = #{record.articleFirst,jdbcType=INTEGER},
+      source_url = #{record.sourceUrl,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjnu.model.Article">
+    update article
+    <set>
+      <if test="articleContent != null">
+        article_content = #{articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="articleTitle != null">
+        article_title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="kindParentName != null">
+        kind_parent_name = #{kindParentName,jdbcType=VARCHAR},
+      </if>
+      <if test="kindChildName != null">
+        kind_child_name = #{kindChildName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="articleSummary != null">
+        article_summary = #{articleSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="articleWriter != null">
+        article_writer = #{articleWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSource != null">
+        article_source = #{articleSource,jdbcType=VARCHAR},
+      </if>
+      <if test="articleHints != null">
+        article_hints = #{articleHints,jdbcType=INTEGER},
+      </if>
+      <if test="releaseTime != null">
+        release_time = #{releaseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="articlePower != null">
+        article_power = #{articlePower,jdbcType=VARCHAR},
+      </if>
+      <if test="checkUp != null">
+        check_up = #{checkUp,jdbcType=INTEGER},
+      </if>
+      <if test="articleCollection != null">
+        article_collection = #{articleCollection,jdbcType=INTEGER},
+      </if>
+      <if test="articleUp != null">
+        article_up = #{articleUp,jdbcType=INTEGER},
+      </if>
+      <if test="articleDown != null">
+        article_down = #{articleDown,jdbcType=INTEGER},
+      </if>
+      <if test="articleState != null">
+        article_state = #{articleState,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAvatar != null">
+        article_avatar = #{articleAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="articleBig != null">
+        article_big = #{articleBig,jdbcType=INTEGER},
+      </if>
+      <if test="articleFirst != null">
+        article_first = #{articleFirst,jdbcType=INTEGER},
+      </if>
+      <if test="sourceUrl != null">
+        source_url = #{sourceUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjnu.model.Article">
+    update article
+    set article_content = #{articleContent,jdbcType=VARCHAR},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      kind_parent_name = #{kindParentName,jdbcType=VARCHAR},
+      kind_child_name = #{kindChildName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      article_summary = #{articleSummary,jdbcType=VARCHAR},
+      article_writer = #{articleWriter,jdbcType=VARCHAR},
+      article_source = #{articleSource,jdbcType=VARCHAR},
+      article_hints = #{articleHints,jdbcType=INTEGER},
+      release_time = #{releaseTime,jdbcType=VARCHAR},
+      article_power = #{articlePower,jdbcType=VARCHAR},
+      check_up = #{checkUp,jdbcType=INTEGER},
+      article_collection = #{articleCollection,jdbcType=INTEGER},
+      article_up = #{articleUp,jdbcType=INTEGER},
+      article_down = #{articleDown,jdbcType=INTEGER},
+      article_state = #{articleState,jdbcType=VARCHAR},
+      article_avatar = #{articleAvatar,jdbcType=VARCHAR},
+      article_big = #{articleBig,jdbcType=INTEGER},
+      article_first = #{articleFirst,jdbcType=INTEGER},
+      source_url = #{sourceUrl,jdbcType=VARCHAR}
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </update>
+</mapper>

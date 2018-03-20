@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjnu.dao.ArticleAttachMapper">
+  <cache type="com.zjnu.redis.RedisCache" />
+  <resultMap id="BaseResultMap" type="com.zjnu.model.ArticleAttach">
+    <constructor>
+      <arg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tags" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tag_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="pics" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pic_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    article_id, tags, tag_number, pics, pic_number
+  </sql>
+  <select id="selectByExample" parameterType="com.zjnu.model.ArticleAttachExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from article_attach
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.zjnu.model.ArticleAttachExample">
+    delete from article_attach
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zjnu.model.ArticleAttach">
+    insert into article_attach (article_id, tags, tag_number, 
+      pics, pic_number)
+    values (#{articleId,jdbcType=BIGINT}, #{tags,jdbcType=VARCHAR}, #{tagNumber,jdbcType=INTEGER}, 
+      #{pics,jdbcType=VARCHAR}, #{picNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjnu.model.ArticleAttach">
+    insert into article_attach
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="tags != null">
+        tags,
+      </if>
+      <if test="tagNumber != null">
+        tag_number,
+      </if>
+      <if test="pics != null">
+        pics,
+      </if>
+      <if test="picNumber != null">
+        pic_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="tagNumber != null">
+        #{tagNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pics != null">
+        #{pics,jdbcType=VARCHAR},
+      </if>
+      <if test="picNumber != null">
+        #{picNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zjnu.model.ArticleAttachExample" resultType="java.lang.Long">
+    select count(*) from article_attach
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update article_attach
+    <set>
+      <if test="record.articleId != null">
+        article_id = #{record.articleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.tags != null">
+        tags = #{record.tags,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tagNumber != null">
+        tag_number = #{record.tagNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.pics != null">
+        pics = #{record.pics,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picNumber != null">
+        pic_number = #{record.picNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update article_attach
+    set article_id = #{record.articleId,jdbcType=BIGINT},
+      tags = #{record.tags,jdbcType=VARCHAR},
+      tag_number = #{record.tagNumber,jdbcType=INTEGER},
+      pics = #{record.pics,jdbcType=VARCHAR},
+      pic_number = #{record.picNumber,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
