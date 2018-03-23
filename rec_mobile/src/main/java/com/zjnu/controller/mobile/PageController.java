@@ -15,6 +15,7 @@ import com.zjnu.model.User;
 import com.zjnu.pojo.ArticleAttachPojo;
 import com.zjnu.pojo.ArticleDetail;
 import com.zjnu.pojo.PageResult;
+import com.zjnu.redis.JedisUtil;
 import com.zjnu.service.ArticleService;
 import com.zjnu.service.UserService;
 import com.zjnu.utils.StringUtil;
@@ -39,6 +40,14 @@ public class PageController {
     private ArticleService articleService;
     @Resource
     private UserService userService;
+
+    @ResponseBody
+    @RequestMapping(value = "/clearReadis")
+    public String clearReadis() {
+        //清除redis缓存
+        JedisUtil.getJedis().flushDB();
+        return "清楚成功";
+    }
 
     @RequestMapping("/m")
     public String main() {

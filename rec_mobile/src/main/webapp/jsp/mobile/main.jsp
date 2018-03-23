@@ -36,16 +36,6 @@
         //没有更多数据
         var nomore_Text = '没有更多数据';
 
-
-        /*
-         页面加载完毕执行一次查询
-         */
-        window.onload = function () {
-            //加载数据
-            //游客，得出最点击量高和赞高的
-            loadData();
-        };
-
         function loadData() {
             //发送ajax
             $.ajax({
@@ -54,7 +44,7 @@
                 //请求方式
                 type: 'POST',
                 //参数
-                data: {currentPage: currentPage, rows: rows},
+                data: {currentPage: 1, rows: 5},
                 //成功回调
                 success: function (data) {
                     currentPage++;
@@ -124,7 +114,14 @@
             });
         }
 
-
+        /*
+               页面加载完毕执行一次查询
+               */
+        window.onload = function () {
+            //加载数据
+            //游客，得出最点击量高和赞高的
+            loadData();
+        };
 
     </script>
 </head>

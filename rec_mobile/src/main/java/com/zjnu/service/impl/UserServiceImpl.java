@@ -4,6 +4,7 @@ import com.zjnu.dao.UserMapper;
 import com.zjnu.model.User;
 import com.zjnu.model.UserExample;
 import com.zjnu.service.UserService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
+    @Cacheable(value = {"UserService2"})
+    @Override
     public User getOneByName(String name) {
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
@@ -29,6 +32,7 @@ public class UserServiceImpl implements UserService {
         return users.get(0);
 
     }
+    @Cacheable(value = {"UserService2"})
     @Override
     public User getUserById(Long userId) {
         UserExample userExample = new UserExample();
