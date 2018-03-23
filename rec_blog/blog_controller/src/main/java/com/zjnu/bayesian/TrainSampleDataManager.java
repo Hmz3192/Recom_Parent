@@ -9,10 +9,6 @@ import java.util.*;
  * <p>Title:TrainSmapleDataManager</p>
  * <p>Description: 训练样本管理器
  * </p>
- *
- * @author xq
- * @version 1.0
- * @createDate：2013-8-30
  */
 public class TrainSampleDataManager {
     /**
