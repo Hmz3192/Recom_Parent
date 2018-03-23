@@ -7,7 +7,7 @@
 <html>
 
 <head>
-    <title>后台管理</title>
+    <title>NewsPro-后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS Libs -->
     <link rel="stylesheet" type="text/css" href="${path}/static/css/bootstrap.min.css">

@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Page Not Found :(</title>
+    <title>NewsPro-Page Not Found :(</title>
     <style>
         ::-moz-selection {
             background: #b3d4fc;
