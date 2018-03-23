@@ -57,14 +57,6 @@
         gio('send');
     </script>
 
-    <link rel="apple-touch-icon" sizes="76x76"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-76x76.png"/>
-    <link rel="apple-touch-icon" sizes="120x120"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-120x120.png"/>
-    <link rel="apple-touch-icon" sizes="152x152"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-152x152.png"/>
-    <link rel="apple-touch-icon" sizes="180x180"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-180x180.png"/>
 
 </head>
 
@@ -126,8 +118,8 @@
         </ul>
         <div class="user-face-wrap">
             <div class="text-center">
-                <a class="login-link c3" href="${path}/mL">登录</a>
-                <a class="login-link b1" href="${path}/mR">极速注册</a>
+                <a class="login-link c3" style="border: 1px solid #333;color: #333;background: none"  href="${path}/mL">登录</a>
+                <a class="login-link b1"  style="border: 1px solid #333;color: #333;background: none" href="${path}/mR">极速注册</a>
             </div>
         </div>
 

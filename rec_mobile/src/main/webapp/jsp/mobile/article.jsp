@@ -43,7 +43,7 @@
             relatedArticle = 'similar';
         }
 
-        var static_url = 'https://static.huxiucdn.com';
+        var static_url = 'https://static2.huxiucdn.com';
         var huxiu_url = 'https://m.huxiu.com';
     </script>
     <script type='text/javascript'>
@@ -57,14 +57,6 @@
         gio('send');
     </script>
 
-    <link rel="apple-touch-icon" sizes="76x76"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-76x76.png"/>
-    <link rel="apple-touch-icon" sizes="120x120"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-120x120.png"/>
-    <link rel="apple-touch-icon" sizes="152x152"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-152x152.png"/>
-    <link rel="apple-touch-icon" sizes="180x180"
-          href="https://static.huxiucdn.com/common/image/apple-touch-icon-180x180.png"/>
 
 </head>
 
@@ -124,8 +116,8 @@
         </ul>
         <div class="user-face-wrap">
             <div class="text-center">
-                <a class="login-link c3" href="${path}/mL">登录</a>
-                <a class="login-link b1" href="${path}/mR">极速注册</a>
+                <a class="login-link c3" style="border: 1px solid #333;color: #333" href="${path}/mL">登录</a>
+                <a class="login-link b1" style="border: 1px solid #333;color: #333;background: none" href="${path}/mR">极速注册</a>
             </div>
         </div>
     </div>
@@ -238,55 +230,6 @@
         </div>
         <div class="placeholder-line"></div>
 
-        <div id="related-article-wrap">
-            <!--热文推荐-->
-            <div class="placeholder-line"></div>
-            <div class="article-recommend-wrap">
-                <h2 class="title">热&nbsp;文&nbsp;推&nbsp;荐</h2>
-            </div>
-            <div class="recommend-info-wrap js-recommend-info">
-                <ul class="recommend-ul">
-                    <li>
-                        <a class="js-recommend-open-app js-hmt-detection" data-detection="M文章热文推荐,打开APP,点击"
-                           data-id="235098">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/014608727913.jpg">
-                            <p class="recommend-info-title">
-                                抖音能打败快手吗？ </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-recommend-open-app js-hmt-detection" data-detection="M文章热文推荐,打开APP,点击"
-                           data-id="235150">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/115836086837.jpg">
-                            <p class="recommend-info-title">
-                                美朝峰会很可能以牺牲中国为筹码 </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-hmt-detection" data-detection="M文章热文推荐,打开文章,点击" href="#" data-id="234916">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/200943366958.jpg">
-                            <p class="recommend-info-title">
-                                连续16天排在App Store下载榜第一，抖音砸了多少钱？ </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-hmt-detection" data-detection="M文章热文推荐,打开文章,点击" href="#" data-id="235135">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/102655175424.jpg">
-                            <p class="recommend-info-title">
-                                斗鱼、虎牙都归腾讯，游戏直播没有下半场了 </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-recommend-open-app js-hmt-detection" data-detection="M文章热文推荐,打开APP,点击"
-                           data-id="235102">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/071635150089.jpg ">
-                            <p class="recommend-info-title">
-                                【早报】华为申请区块链技术专利；iCloud窃密人员已辞职一个月 </p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
         <div class="pl-wrap">
             <div>
@@ -353,13 +296,11 @@
                     </li>
                 </ul>
             </div>
-            <a class="bottom-more-comment js-open-app js-pl-detection" data-type="pl-to-app">
+            <a class="bottom-more-comment js-open-app js-pl-detection">
                 已有2个评论，等待你的发声
             </a>
         </div>
-        <a class="mod-sidebar" href="/">
-            <div class="goTo go-to-box"><i class="icon-a icon-goTo"></i></div>
-        </a>
+
     </div>
 
 </div>

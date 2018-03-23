@@ -164,56 +164,6 @@
         </div>
         <div class="placeholder-line"></div>
 
-        <div id="related-article-wrap">
-            <!--热文推荐-->
-            <div class="placeholder-line"></div>
-            <div class="article-recommend-wrap">
-                <h2 class="title">热&nbsp;文&nbsp;推&nbsp;荐</h2>
-            </div>
-            <div class="recommend-info-wrap js-recommend-info">
-                <ul class="recommend-ul">
-                    <li>
-                        <a class="js-recommend-open-app js-hmt-detection" data-detection="M文章热文推荐,打开APP,点击"
-                           data-id="235098">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/014608727913.jpg">
-                            <p class="recommend-info-title">
-                                抖音能打败快手吗？ </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-recommend-open-app js-hmt-detection" data-detection="M文章热文推荐,打开APP,点击"
-                           data-id="235150">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/115836086837.jpg">
-                            <p class="recommend-info-title">
-                                美朝峰会很可能以牺牲中国为筹码 </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-hmt-detection" data-detection="M文章热文推荐,打开文章,点击" href="#" data-id="234916">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/200943366958.jpg">
-                            <p class="recommend-info-title">
-                                连续16天排在App Store下载榜第一，抖音砸了多少钱？ </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-hmt-detection" data-detection="M文章热文推荐,打开文章,点击" href="#" data-id="235135">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/102655175424.jpg">
-                            <p class="recommend-info-title">
-                                斗鱼、虎牙都归腾讯，游戏直播没有下半场了 </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="js-recommend-open-app js-hmt-detection" data-detection="M文章热文推荐,打开APP,点击"
-                           data-id="235102">
-                            <img class="recommend-article-img lazy" src="${path}/mobileStatic/images/071635150089.jpg ">
-                            <p class="recommend-info-title">
-                                【早报】华为申请区块链技术专利；iCloud窃密人员已辞职一个月 </p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <div class="pl-wrap">
             <div>
                 <div class="placeholder-line"></div>
@@ -279,13 +229,10 @@
                     </li>
                 </ul>
             </div>
-            <a class="bottom-more-comment js-open-app js-pl-detection" data-type="pl-to-app">
+            <a class="bottom-more-comment js-open-app js-pl-detection" >
                 已有2个评论，等待你的发声
             </a>
         </div>
-        <a class="mod-sidebar" href="/">
-            <div class="goTo go-to-box"><i class="icon-a icon-goTo"></i></div>
-        </a>
     </div>
 
 </div>
