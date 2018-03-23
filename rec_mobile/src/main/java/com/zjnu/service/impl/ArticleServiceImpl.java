@@ -22,7 +22,7 @@ public class ArticleServiceImpl implements ArticleService{
     @Resource
     private ArticleMapper articleMapper;
 
-    @Cacheable(value = "ArticleService")
+    @Cacheable(value = "ArticleService2")
     @Override
     public List<Article> getAllArticlesByKind(String kind) {
         ArticleExample example = new ArticleExample();
@@ -35,7 +35,7 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
 
-    @Cacheable(value = "ArticleService")
+    @Cacheable(value = "ArticleService2")
     @Override
     public List<Article> getAllSend() {
         ArticleExample example = new ArticleExample();
@@ -47,7 +47,7 @@ public class ArticleServiceImpl implements ArticleService{
         return articles;
     }
 
-    @Cacheable(value = {"ArticleCache"})
+    @Cacheable(value = {"ArticleService2"})
     @Override
     public Article getOne(Long articleID) {
         return articleMapper.selectByPrimaryKey(articleID);

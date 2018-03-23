@@ -113,7 +113,6 @@ public class SensitivewordFilter {
 	/**
 	 * 检查文字中是否包含敏感字符，检查规则如下：<br>
 	 * @author chenming 
-	 * @date 2014年4月20日 下午4:31:03
 	 * @param txt
 	 * @param beginIndex
 	 * @param matchType
