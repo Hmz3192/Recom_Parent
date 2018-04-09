@@ -54,7 +54,7 @@
                         var rs = result[i],
                             id = rs.articleId;
                         if (rs.articleAvatar.length == 0 || rs.articleAvatar == "") {
-                            var pic = "http://localhost:8110/mobileStatic/images/20180312131741_222.jpg"
+                            var pic = "${path}/mobileStatic/images/20180312131741_222.jpg"
                         } else
                             var pic = rs.articleAvatar
 

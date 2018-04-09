@@ -51,7 +51,6 @@ public class ArticleController {
         solrService = getService();
         Article article = articleService.getOneById(articleId);
         User oneById = userService.getOneById(article.getUserId());
-        article.setCheckUp(1);
         articleService.updateIndex(article);
         List<Map<String, Object>> indexData = StringUtil.prepareIndexData(article,oneById);
         FullTextIndexParams fullTextIndexParams = new FullTextIndexParams();

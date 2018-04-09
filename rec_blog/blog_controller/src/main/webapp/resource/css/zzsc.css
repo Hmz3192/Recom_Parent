@@ -15,7 +15,7 @@
 #moquu_wxin { bottom:130px; 
 }
 #moquu_wxin a {
-	background:url(http://localhost:8111/resource/images/sbtn.png) 0 0px;
+	background:url(http://192.168.222.129:8111/resource/images/sbtn.png) 0 0px;
 	
 	float:left;
 	width:30px;
@@ -23,12 +23,12 @@
 	text-indent:-9999px
 }
 #moquu_wxin a:hover {
-	background:url(http://localhost:8111/resource/images/sbtn.png) -30px -0px
+	background:url(http://192.168.222.129:8111/resource/images/sbtn.png) -30px -0px
 }
 #moquu_wshare {bottom:100px; 
 }
 #moquu_wshare a {
-	background:url(http://localhost:8111/resource/images/sbtn.png) 0 -30px;
+	background:url(http://192.168.222.129:8111/resource/images/sbtn.png) 0 -30px;
 	width:30px;
 	height:30px;
 	right:0;
@@ -36,7 +36,7 @@
 	text-indent:-9999px
 }
 #moquu_wshare a:hover {
-	background:url(http://localhost:8111/resource/images/sbtn.png) -30px -30px
+	background:url(http://192.168.222.129:8111/resource/images/sbtn.png) -30px -30px
 }
 
 .moquu_wxin,.moquu_wshare {
@@ -53,7 +53,7 @@
 	bottom:0px;
 	width:70px;
 	height:30px;
-	background:url(http://localhost:8111/resource/images/fankui.png) 0 0 no-repeat #ff6060;
+	background:url(http://192.168.222.129:8111/resource/images/fankui.png) 0 0 no-repeat #ff6060;
 	color:#FFF; border-radius:4px 0 0 4px;
 }
 .moquu_wshare .moquu_wshareh {
@@ -63,11 +63,11 @@
 	bottom:-85px;
 	width:100px;
 	height:120px;
-	background:url(http://localhost:8111/resource/images/weixin.png) no-repeat
+	background:url(http://192.168.222.129:8111/resource/images/weixin.png) no-repeat
 }
 
 
-#topcontrol{background:url(http://localhost:8111/resource/images/top.png) ; height:30px; width:30px; border-radius:4px;}
+#topcontrol{background:url(http://192.168.222.129:8111/resource/images/top.png) ; height:30px; width:30px; border-radius:4px;}
 
 
 

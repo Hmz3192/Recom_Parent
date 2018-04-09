@@ -155,7 +155,6 @@
                 <li class="active" onMouseDown=Tabs1(this,0);><a href="#menu">我的文章</a></li>
                 <li class="" onMouseDown=Tabs1(this,1);><a href="#menu">我的评论</a></li>
                 <li class="" onMouseDown=Tabs1(this,2);><a href="#zuji">我的足迹</a></li>
-                <li class="" onMouseDown=Tabs1(this,3);><a href="#menu">我的个性模型</a></li>
                 <!--<li class="" onMouseDown=Tabs1(this,4);><a href="#menu">我的项目</a></li>-->
             </ul>
         </div>
@@ -259,42 +258,34 @@
                     <h3 data-delighter class="left">并对其中的<a style="font-size:50px;color: #c7254e"> 36 </a>篇文章进行了点评</h3>
                     <h4 data-delighter>其中，您最喜爱的文章是： </h4>
                     <ul data-delighter>
-                        <li>One Flew Over the Cuckoo's Nest (1975) <a style="font-size:20px;color: #c7254e">10min</a>
+                        <li>公务员、老师酒驾直接开除？！法盲才会信吧！ <a style="font-size:20px;color: #c7254e">10min</a>
                         </li>
-                        <li>Ben-Hur (1959) <a style="font-size:20px;color: #c7254e">9min</a></li>
-                        <li>Beauty and the Beast (1991) <a style="font-size:20px;color: #c7254e">8min</a></li>
-                        <li>Sound of Music, The (1965) <a style="font-size:20px;color: #c7254e">8min</a></li>
-                        <li>Back to the Future (1985) <a style="font-size:20px;color: #c7254e">8min</a></li>
-                        <li>Last Days of Disco, The (1998) <a style="font-size:20px;color: #c7254e">7min</a></li>
+                        <li>全民直播时代，未成年权直播益如何维护 <a style="font-size:20px;color: #c7254e">9min</a></li>
+                        <li>员工未缴社保，公司以工作失职解雇HR | 实务派 <a style="font-size:20px;color: #c7254e">8min</a></li>
+                        <li>专业原创 | 从“稻花香”案谈商品通用名称的认定 <a style="font-size:20px;color: #c7254e">8min</a></li>
+                        <li>很重要！工伤赔偿，记住这7个时限 <a style="font-size:20px;color: #c7254e">8min</a></li>
+                        <li>邀请函|律师业务培训公益系列讲座（第一期） <a style="font-size:20px;color: #c7254e">7min</a></li>
                     </ul>
                 </section>
                 <section>
-                    <h2 data-delighter class="right">您使用搜索引擎，一共搜索<a style="font-size:30px;color: #c7254e"> 58</a>次</h2>
+                    <h2 data-delighter class="right">您使用搜索引擎，一共搜索<a style="font-size:30px;color: #c7254e"> 177</a>次</h2>
                     <h4 data-delighter>其中： </h4>
                     <ul data-delighter>
                         <li><code>侯亮平</code> 38 次</li>
-                        <li><code>重庆</code> 13 次</li>
-                        <li><code>四川</code> 7 次</li>
+                        <li><code>陈海</code> 23 次</li>
+                        <li><code>热血</code> 17 次</li>
                     </ul>
                 </section>
                 <section>
                     <h3 data-delighter class="right">我们为您生成如下您最喜爱的标签模型：</h3>
                     <script type="text/javascript" src="${path}/resource/slide/script.js"></script>
                     <div id="tagbox">
-                        <a class="yellow">动画</a>
-                        <a class="red">儿童</a>
-                        <a class="blue">音乐</a>
-                        <a class="common">浪漫</a>
-                        <a class="blue">戏剧</a>
+                        <a class="yellow">司法</a>
+                        <a class="blue">影视</a>
+                        <a class="common">社会</a>
                     </div>
                 </section>
             </article>
-        </div>
-        <!--我的个性建模-->
-        <div class="user-content-warp" style="display:none" id=myTabs1_Content3>
-            <div class="topic-message-wrap">
-                <div class="no-content-prompt">TA还没有关注</div>
-            </div>
         </div>
         <!--<div class="user-content-warp" style="display:none" id=myTabs1_Content4>
             <div class="product-html-box">

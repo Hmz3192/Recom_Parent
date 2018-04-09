@@ -31,7 +31,7 @@ jQuery(document).ready(function($){
                 toast("提醒","请先登录","warning");
                 return false;
             }else
-                window.location.href="http://localhost:8111/tosub"
+                window.location.href="http://192.168.222.129:8111/tosub"
         });
     //弹出窗口
    /* $main_nav.on('click', function(event){

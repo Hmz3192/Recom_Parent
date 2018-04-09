@@ -290,19 +290,19 @@
                             <div>
                                 <ul class="list-group">
                                     <li class="list-group-item">
-                                        <span class="badge">14</span> APP新闻推荐的真棒！
+                                        <span class="badge">14</span> 哇哦，我觉得这个真的超级方便啊!
                                     </li>
                                     <li class="list-group-item">
-                                        <span class="badge">1</span> APP新闻推荐的真棒！
+                                        <span class="badge">1</span> 同意楼上，我也是这样感觉的，超级棒的APP!
                                     </li>
                                     <li class="list-group-item">
-                                        <span class="badge">2</span> APP新闻推荐的真棒！
+                                        <span class="badge">2</span> 都是我喜欢的资讯商家，超级赞！！！
                                     </li>
                                     <li class="list-group-item">
-                                        <span class="badge">2</span> APP新闻推荐的真棒！
+                                        <span class="badge">2</span> 强烈推荐，哇，真是科技改变生活啊！
                                     </li>
                                     <li class="list-group-item">
-                                        <span class="badge">2</span> APP新闻推荐的真棒！
+                                        <span class="badge">2</span> 非常棒，期望可以带来更好的作品！
                                     </li>
                                     <li class="list-group-item">
                                         <span class="badge">2</span> APP新闻推荐的真棒！

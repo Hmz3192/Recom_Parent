@@ -137,6 +137,46 @@ public class PageController {
         model.addAttribute("searchList", tempList);
         return "mobile/msearch";
     }
+	
+	 //android查找2
+    @RequestMapping("/mSearch")
+    public String mS(String query, Model model) {
+        beginService();
+        FullTextSearchParams fullTextSearchParams = new FullTextSearchParams();
+        fullTextSearchParams.setQueryWord(query);
+        //sousuo yu
+        List<String> assignmentFields = new ArrayList<String>();
+        assignmentFields.add("title");
+        assignmentFields.add("conten");
+        assignmentFields.add("summ");
+        fullTextSearchParams.setAssignmentFields(assignmentFields);
+        //shitu yu
+        String[] viewFields = new String[]{"id","title","conten","summ","name","time"};
+        fullTextSearchParams.setViewFields(viewFields);
+
+        fullTextSearchParams.setViewNums(30);
+        fullTextSearchParams.setIsHighlight(true);
+        String[] highlightFields = {"title","conten","summ","name"};
+        fullTextSearchParams.setHighlightFields(highlightFields);
+        fullTextSearchParams.setPreHighlight("<em>");
+        fullTextSearchParams.setPostHighlight("</em>");
+
+        //guolv
+        /*Map<String,String> filterField = new HashMap<String,String>();
+        filterField.put("columnId", columnId+"");
+        fullTextSearchParams.setFilterField(filterField);*/
+
+        FullTextResult result = searchService.doQuery(fullTextSearchParams);
+        long numFound = result.getNumFound();
+        List tempList = result.getResultList();
+
+        int pageRow = tempList.size();
+        int pageSize = 10;
+        model.addAttribute("queryString", query);
+        model.addAttribute("num", numFound);
+        model.addAttribute("searchList", tempList);
+        return "mobile/msearch";
+    }
 
     //wap query
     @RequestMapping("/S")

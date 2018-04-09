@@ -25,9 +25,9 @@
 <body>
 <div class="search-wrap-show active">
     <div class="search-input-box">
-        <form action="/search.html" method="get">
+        <form action="${path}/mSearch" method="get">
             <button type="submit" class="input-sm-search"><i class="icon icon-sm-search"></i></button>
-            <input class="search-input" type="search" id="search-s" name="s" placeholder="输入关键词"
+            <input class="search-input" type="search" id="search-s" name="query" placeholder="输入关键词"
                    value="${queryString}">
         </form>
     </div>

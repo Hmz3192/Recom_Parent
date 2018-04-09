@@ -90,7 +90,7 @@
         var kind = $(this).attr("data-name");
         $(this).parent().children("li").removeClass("active")
         $(this).addClass("active")
-
+        $("#list").empty();
         var currentpage = 1, rows = 5;
         var html = ""
         var list = $("#list");
@@ -131,7 +131,7 @@
                 var rs = result[i],
                     id = rs.articleId;
                 if (rs.articleAvatar.length == 0 || rs.articleAvatar == "") {
-                    var pic = "http://localhost:8111/attached/cover/20180312/20180312131741_222.jpg"
+                    var pic = "${path}/attached/cover/20180312/20180312131741_222.jpg"
                 } else
                     var pic = rs.articleAvatar
                 var title = rs.articleTitle,

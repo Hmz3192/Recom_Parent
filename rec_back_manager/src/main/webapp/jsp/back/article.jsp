@@ -312,7 +312,7 @@
                                             </div>
                                         </td>
                                         <td style="vertical-align: middle;">${ar.articleSource}</td>
-                                        <td style="vertical-align: middle;">安卓</td>
+                                        <td style="vertical-align: middle;">--</td>
                                         <td style="vertical-align: middle;">${ar.articleHints}</td>
                                         <td style="vertical-align: middle;">${ar.articleCollection}</td>
                                         <td style="vertical-align: middle;">${ar.articleUp}</td>

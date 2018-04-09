@@ -287,20 +287,43 @@ public class ArticleController {
             //已经推荐好的物品id
             String key = String.format("RUI:%s", user.getUserId() + "");
             String value = JedisUtil.getJedis().get(key);
+            //实时推荐没有推荐，就基于物品的推荐
             if (value == null || value.length() <= 0) {
-                //基于用户无偏好推荐
-                RecommendedItems recommendedItems2 = BooleaReco.recBooleanBaseUser(user.getUserId(), 30);
-                Long[] items = recommendedItems2.getItems();
+                String pre_str = "user:";
+                Set<String> set = JedisUtil.getJedis().keys(pre_str + "*");
+                Iterator<String> it = set.iterator();
+                List<NewClickEvent> newClickEvents = new ArrayList<>();
+                Set<Long> mostItemIds = new HashSet<>();
+                while (it.hasNext()) {
+                    String keyStr = it.next();
+                    String value2 = JedisUtil.getJedis().get(keyStr);
+                    mostItemIds.add(Long.valueOf(value2));
+                }
+                Long[] longs1;
+                //基于物品的推荐
+                List<ArticleRating> articleRating = ratingService.getArticleRating();
+                if (mostItemIds.size() > 0) {
+                    Set<Long> longs = mostItemIds;
+                    longs1 = BasedItemRec.itemRec(longs);
+                } else {
+                    //没有点击，就应该随机
+//                longs1 = ItemRec.itemRec(mostItemIds, articleRating);
+                    Random random = new Random();
+                    int itemid = random.nextInt(1000);
+                    RecommendedItems recommendedItems1 = BooleaReco.recBooleanBaseItem(itemid, rows);
+                    longs1 = recommendedItems1.getItems();
+                }
+
                 PageHelper.startPage(currentPage, rows);
-                List<Article> articles = articleService.selectByArray(items);
+                List<Article> articles = articleService.selectByArray(longs1);
                 PageInfo<Article> info = new PageInfo<Article>(articles);
                 long total;
                 if (info.getTotal() % rows == 0) {
                     total = info.getTotal() / rows;
                 } else
                     total = info.getTotal() / rows + 1;
-                PageResult pageResult2 = new PageResult(total, articles, currentPage);
-                return pageResult2;
+                pageResult = new PageResult(total, articles, currentPage);
+                return pageResult;
             }
 
             List<ItemSimilarity> userItems = JSON.parseArray(value, ItemSimilarity.class);
@@ -373,7 +396,7 @@ public class ArticleController {
             Date day = new Date();
             SimpleDateFormat df = new SimpleDateFormat("MMddHHmmss");
             System.out.println(df.format(day));
-            JedisUtil.getJedis().set("user:" + user.getUserId() + df.format(day), "" + articleId);
+            JedisUtil.getJedis().set("user:" + user.getUserId(), "" + articleId);
         } else {
             //游客查看
             Date day = new Date();

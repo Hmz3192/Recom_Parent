@@ -22,18 +22,18 @@ window.onload=function ()
 {
 	var i=0;
 	var oTag=null;
-	
+
 	oDiv=document.getElementById('tagbox');
-	
+
 	aA=oDiv.getElementsByTagName('a');
 	
 	for(i=0;i<aA.length;i++)
 	{
 		oTag={};
-		
+
 		oTag.offsetWidth=aA[i].offsetWidth;
 		oTag.offsetHeight=aA[i].offsetHeight;
-		
+
 		mcList.push(oTag);
 	}
 	

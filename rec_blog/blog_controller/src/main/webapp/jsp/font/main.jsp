@@ -130,7 +130,7 @@
                             id = rs.articleId
 //                            pic = "http://localhost:8111/" + rs.articleAvatar,
                         if (rs.articleAvatar.length == 0 || rs.articleAvatar == "") {
-                            var pic = "http://localhost:8111/attached/cover/20180312/20180312131741_222.jpg"
+                            var pic = "${path}/attached/cover/20180312/20180312131741_222.jpg"
                         } else
                             var pic = rs.articleAvatar,
                         title = rs.articleTitle,
@@ -164,6 +164,7 @@
                     success: function (data) {
                         zeroModal.closeAll()
                         if (data.total == 0) {
+                            alert("0");
                         } else
                             setHuanYiPi(data);
                     },
@@ -233,7 +234,7 @@
             });
 
             function setHuanYiPi(data) {
-                list.empty();
+                $("#list").empty();
                 var html = '', result = data.amounts, len = result.length, i = 0;
                 var path = '${path}';
                 for (; i < len; i++) {
@@ -245,7 +246,7 @@
 
 //                        pic = "http://localhost:8111/" + rs.articleAvatar,
                     if (rs.articleAvatar.length == 0 || rs.articleAvatar == "") {
-                        var pic = "http://localhost:8111/attached/cover/20180312/20180312131741_222.jpg"
+                        var pic = "${path}/attached/cover/20180312/20180312131741_222.jpg"
                     } else
                         var pic = rs.articleAvatar
                     var title = rs.articleTitle,
@@ -457,7 +458,7 @@
 
 //                        pic = "http://localhost:8111/" + rs.articleAvatar,
                     if (rs.articleAvatar.length == 0 || rs.articleAvatar == "") {
-                        var pic = "http://localhost:8111/attached/cover/20180312/20180312131741_222.jpg"
+                        var pic = "${path}/attached/cover/20180312/20180312131741_222.jpg"
                     } else
                         var pic = rs.articleAvatar
                     var title = rs.articleTitle,
@@ -723,7 +724,6 @@
                 </li>
             </ul>
         </div>
-        <link rel="stylesheet" type="text/css" href="https://static.huxiucdn.com/www/css/moment.css">
         <div id="moment"></div>
         <div class="box-moder hot-article">
             <h3>实时热文</h3>

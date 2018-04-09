@@ -166,16 +166,6 @@
             <li class="nav-news"><a href="${path}/ki" target="_blank">筛选</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right transition  xiala main_nav">
-            <li class="app-guide js-app-guide">
-                <div class="app-guide-box">
-                    <img src="${path}/resource/images/1448211685.png">
-                    <div class="app-guide-title">
-                        <span>微信扫一扫</span><br>
-                        <span>下载APP</span>
-                    </div>
-                </div>
-                <i class="icon icon-sm-phone"></i>APP下载<em class="guide-prompt"></em>
-            </li>
             <li class="search-li js-show-search-box"><a><i class="icon icon-search "></i></a><span>搜索</span></li>
             <c:if test="${sessionScope.user == null}">
                 <li class="login-link-box"><a class="cd-signin">登录</a></li>

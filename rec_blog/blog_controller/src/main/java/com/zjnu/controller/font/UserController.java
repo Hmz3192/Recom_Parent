@@ -70,9 +70,7 @@ public class UserController {
                 File resultFile = new File(System.getProperty("java.io.tmpdir"), "BaseOnItem.dat");
                 //创建离线需要的不过以后会删除，和基于物品的推荐
                 try {
-                    if (!resultFile.exists()) {
                         FileUtil.write2Dat(articleRating,resultFile);
-                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -81,9 +79,7 @@ public class UserController {
                 //创建无偏好的数据格式
                     try {
                         File originalFile = new File(new File(System.getProperty("java.io.tmpdir")), "boolean.base");
-                        if (!originalFile.exists()) {
                             FileUtil.write2DatBoolean(articleRating);
-                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
