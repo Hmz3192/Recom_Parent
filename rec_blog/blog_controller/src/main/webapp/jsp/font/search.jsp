@@ -69,7 +69,7 @@
 
         <form role="search" method="post" action="${path}/query">
             <input class="search-input-list" name="queryString" value="${queryString}">
-            <button type="submit" class="search-btn transition"><i class="icon icon-search-list"></i></button>
+            <button type="submit" style="background-color: #e19d5e" class="search-btn transition"><i class="icon icon-search-list"></i></button>
         </form>
         <!--<div class="search-sort-wrap">
             <a class="js-search-sort active" href="#">相关度</a>
@@ -90,13 +90,30 @@
             <div class="search-list-warp">
                 <ul class="search-wrap-list-ul">
                     <c:forEach items="${requestScope.searchList}" var="map">
-                        <li >
-                            <h2> ${map.title }</h2>
+                        <li>
+                            <a href="${path}/toarticle/${map.id }" target="_blank"><span style="font-size: 20px"> ${map.title }</span></a>
+                            <span style="font-style: oblique;float:right;color: red;font-size: 30px" > <u>${map.hit }</u></span>
+                            <br>
                             <div class="mob-summay">
-                                    <font size="3px">概要</font>：${map.summ }...
+                                    <font size="3px" style="color: #9E9E9E">概要</font>：${map.summ }...
                             </div>
                             <div class="mob-summay">
-                                <font size="3px">内容</font>：${map.conten }...
+                                <font size="3px" style="color: #9E9E9E">内容</font>：${map.conten }...
+                            </div>
+                            <div class="mob-summay">
+                                <font size="3px" style="color: #9E9E9E">附件Ⅰ</font>：${map.klAppendix1 }...
+                            </div>
+                            <div class="mob-summay">
+                                <font size="3px" style="color: #9E9E9E">附件Ⅱ</font>：${map.klAppendix2 }...
+                            </div>
+                            <div class="mob-summay">
+                                <font size="3px" style="color: #9E9E9E">附件Ⅲ</font>：${map.klAppendix3 }...
+                            </div>
+                            <div class="mob-summay">
+                                <font size="3px" style="color: #9E9E9E">附件Ⅳ</font>：${map.klAppendix4 }...
+                            </div>
+                            <div class="mob-summay">
+                                <font size="3px" style="color: #9E9E9E">附件Ⅴ</font>：${map.klAppendix5 }...
                             </div>
                             <div class="mob-author"><span class="name">国仁</span>
                                 <span class="time">2018-03-08 07:53</span>

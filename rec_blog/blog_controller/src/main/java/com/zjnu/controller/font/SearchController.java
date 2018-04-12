@@ -55,18 +55,27 @@ public class SearchController {
         assignmentFields.add("title");
         assignmentFields.add("conten");
         assignmentFields.add("summ");
+        assignmentFields.add("klAppendix1");
+        assignmentFields.add("klAppendix2");
+        assignmentFields.add("klAppendix3");
+        assignmentFields.add("klAppendix4");
+        assignmentFields.add("klAppendix5");
         fullTextSearchParams.setAssignmentFields(assignmentFields);
         //shitu yu
-        String[] viewFields = new String[]{"id","title","conten","summ","name","time"};
+        String[] viewFields = new String[]{"id","title","conten","summ","name","time","klAppendix1","klAppendix2","klAppendix3","klAppendix4","klAppendix5","hit"};
         fullTextSearchParams.setViewFields(viewFields);
 
         fullTextSearchParams.setViewNums(100);
         fullTextSearchParams.setIsHighlight(true);
-        String[] highlightFields = {"title","conten","summ","name"};
+        String[] highlightFields = {"title","conten","summ","name","klAppendix1","klAppendix2","klAppendix3","klAppendix4","klAppendix5"};
         fullTextSearchParams.setHighlightFields(highlightFields);
         fullTextSearchParams.setPreHighlight("<em>");
         fullTextSearchParams.setPostHighlight("</em>");
 
+        Map<String,Boolean> sortField = new HashMap<String,Boolean>();
+        sortField.put("hit", false);
+
+        fullTextSearchParams.setSortField(sortField);
         //guolv
         /*Map<String,String> filterField = new HashMap<String,String>();
         filterField.put("columnId", columnId+"");

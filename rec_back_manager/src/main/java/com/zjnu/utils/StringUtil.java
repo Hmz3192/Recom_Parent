@@ -21,7 +21,7 @@ public class StringUtil {
 
 
 
-    public static List<Map<String, Object>> prepareIndexData(Article article, User oneById) {
+    public static List<Map<String, Object>> prepareIndexData(Article article, User oneById, String path) throws Exception {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map = new HashMap<>();
         map.put("id", String.valueOf(article.getArticleId()));
@@ -30,6 +30,41 @@ public class StringUtil {
         map.put("conten", StringUtil.html2Text(article.getArticleContent()).replaceAll(" |\r|\n|\t|&nbsp",""));
         map.put("summ", article.getArticleSummary().replaceAll(" |\r|\n|\t|&nbsp",""));
         map.put("title", article.getArticleTitle().replaceAll(" |\r|\n|\t|&nbsp",""));
+
+        map.put("hit", article.getArticleHints());
+
+        List<String> appendixs = new ArrayList<>();
+        int i = 0;
+        appendixs.add("/file/docx.docx");
+        appendixs.add("/file/pdf.pdf");
+        appendixs.add("/file/word.doc");
+        appendixs.add("/file/xls.xls");
+        for (String appendix : appendixs) {
+            i++;
+            ReadFileUtils readFileUtils = new ReadFileUtils();
+            String appendixExt, content = "";
+            int index = appendix.indexOf(".");
+            appendixExt = appendix.substring(index).toLowerCase();//文件后缀
+            if (appendixExt.equalsIgnoreCase(".pdf")) {
+                content = readFileUtils.readPDF(path + appendix);
+            } else if (appendixExt.equalsIgnoreCase(".docx")) {
+                content = readFileUtils.readWORD(path + appendix);
+            } else if(appendixExt.equalsIgnoreCase(".doc")){
+                content = readFileUtils.readWORD(path + appendix);
+            }else if(appendixExt.equalsIgnoreCase(".xls")){
+                content = readFileUtils.readEXCEL(path + appendix);
+            }
+            else if(appendixExt.equalsIgnoreCase(".xlsx")){
+                content = readFileUtils.readEXCEL2007(path + appendix);
+            }
+            else if(appendixExt.equalsIgnoreCase(".pptx")){
+                content = readFileUtils.readPPT2007(path + appendix);
+            }
+            else if(appendixExt.equalsIgnoreCase(".txt")){
+                content = readFileUtils.readTXT(path + appendix);
+            }
+            map.put("klAppendix" + i, StringUtil.deleteRNB(content));
+        }
         list.add(map);
         return list;
     }

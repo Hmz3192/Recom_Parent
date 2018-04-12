@@ -11,7 +11,7 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <!-- 自动扫描  @Controller-->
-    <context:component-scan base-package="com.zjnu.controller.font"/>
+    <context:component-scan base-package="com.zjnu.controller.*"/>
     <!-- 只有一个全局异常处理器起作用 -->
 <!--
     <bean id="exceptionResolver" class="cn.zjnu.hmz.error.OverallExceptionResolver"></bean>
@@ -26,7 +26,20 @@
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <constructor-arg value="UTF-8" />
             </bean>
+            <!-- 格式化日期 -->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
         </mvc:message-converters>
+
     </mvc:annotation-driven>
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <bean id="mappingJacksonHttpMessageConverter"

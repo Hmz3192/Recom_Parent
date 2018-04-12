@@ -17,6 +17,7 @@
     <link href="${path}/resource/css/login.css" rel="stylesheet" type="text/css"/>
     <link href="${path}/resource/css/zzsc.css" rel="stylesheet" type="text/css"/>
     <link href="${path}/resource/css/dlzc.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="${path}/resource/DanmuPlayer/css/danmuplayer.css">
 
     <script type="text/javascript" src="${path}/resource/js/jquery.js"></script>
 
@@ -27,22 +28,22 @@
             var times = 0;
             start = new Date();//用户进入时间
             var articleId = ${requestScope.articleDetail.article.articleId}
-            $(window).bind('beforeunload', function (e) {
-                end = new Date(); //用户退出时间
-                times = end.getTime() - start.getTime();
-                times = Math.ceil(times / 1000); //取的是秒并且化整
-                $.ajax({
-                    type: 'POST',
-                    async: false, //同步提交
-                    url: '${path}/loadTime',
-                    data: {
-                        times: times,
-                        articleId: articleId
+                $(window).bind('beforeunload', function (e) {
+                    end = new Date(); //用户退出时间
+                    times = end.getTime() - start.getTime();
+                    times = Math.ceil(times / 1000); //取的是秒并且化整
+                    $.ajax({
+                        type: 'POST',
+                        async: false, //同步提交
+                        url: '${path}/loadTime',
+                        data: {
+                            times: times,
+                            articleId: articleId
 
 
-                    }
+                        }
+                    });
                 });
-            });
 
 
             var article_content_id = $("#contentArticle");
@@ -75,9 +76,6 @@
                         '<div class="article-img-box">' +
                         '<img src="' + articleAvatar + '" alt="' + articleTitle + '"></div>' +
                         '<div id="article_content" class="article-content-wrap">' + articleContent +
-                        '<div class="neirong-shouquan"><span class="c2">*文章为作者独立观点，不代表网站立场<br></span>' +
-                        '<span>本文由 <a href="#" target="_blank">' + username + '</a> 授权 <a href="/">兴趣网</a> 发表。转载此文请于文首标明作者姓名，保持文章完整性，并请附上出处</span><br />' +
-                        '<span><b>未按照规范转载者，保留追究相应责任的权利</b></span></div>' +
                         '</div>'
                     article_content_id.append(html);
                 } else {
@@ -115,11 +113,11 @@
                     </div>
                     <div class="author-article-pl">
                         <ul>
-                            <li><a href="#" target="_blank">1002篇文章</a></li>
+                            <li><a href="#" target="_blank">1002篇知识</a></li>
                         </ul>
                     </div>
                     <div class="author-next-article">
-                        <div class="author-one c2">最近文章</div>
+                        <div class="author-one c2">最近知识</div>
                         <a href="http://localhost:8111/toarticle/6" target="_blank" style="display: block">
                             1分钟读通最高法报告</a>
                         <hr>
@@ -133,7 +131,7 @@
                 </div>
                 <div class="placeholder"></div>
                 <div class="box-moder hot-article">
-                    <h3>热文</h3>
+                    <h3>相关知识推荐</h3>
                     <span class="span-mark"></span>
                     <ul>
                         <li>
@@ -167,6 +165,29 @@
                 <div class="article-wrap">
                     <!--正文-->
                     <div id="contentArticle"></div>
+                    <div class="pl-wrap">
+                        <div class="pl-form-wrap">
+                            <span class="span-mark-author active">视频</span>
+                            <div id="danmup"></div>
+                        </div>
+                    </div>
+                    <div class="pl-wrap">
+                        <div class="pl-form-wrap">
+                            <span class="span-mark-author active">附件列表</span>
+                            <div class="list-group" style="padding: 10px">
+                                <a href="${path}/toReadOnline/1" class="list-group-item" style="margin-top: 7px"
+                                   target="_blank">docx.docx</a>
+                                <a href="${path}/toReadOnline/2" class="list-group-item" style="margin-top: 7px"
+                                   target="_blank">pdf.pdf</a>
+                                <a href="${path}/toReadOnline/3" class="list-group-item" style="margin-top: 7px"
+                                   target="_blank">word.doc</a>
+                                <a href="${path}/toReadOnline/4" class="list-group-item" style="margin-top: 7px"
+                                   target="_blank">xls.xls</a>
+                                <a href="${path}/toReadOnline/4" class="list-group-item" style="margin-top: 7px"
+                                   target="_blank">xls.xlsx</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="Qr-code">
                         <!--普通文章点赞-->
                         <div class="praise-box transition js-like-article" id="zan" style="margin: 0 auto">
@@ -369,8 +390,24 @@
 </div>
 
 
+<script src="${path}/resource/DanmuPlayer/danmuplayer.js"></script>
+
 <%@include file="footer.jsp" %>
 <script type="text/javascript" src="${path}/resource/js/mouse.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#danmup").danmuplayer({
+            src: "${path}/attached/video/20180325_111843.mp4",       //视频源
+            width: 729,            //视频宽度
+            height: 445            //视频高度
+        });
+    });
+
+</script>
+
+
 <script>
     $(function () {
 

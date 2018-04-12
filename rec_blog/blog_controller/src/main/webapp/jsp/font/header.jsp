@@ -21,13 +21,44 @@
 
     <%--<script type="text/javascript" src="${path}/resource/js/jquery.js"></script>--%>
     <script type="text/javascript" src="${path}/resource/toast/toast.script.js"></script>
+    <script src="${path}/resource/js/bootstrap.min.js"></script>
 
 
     <style type="text/css">
         ul.list_01 > li:hover ul.list_02 {
             display: block;
         }
+         .klbt {
+             background-color: transparent;
+             -moz-border-radius: 4px;
+             -webkit-border-radius: 4px;
+             border-radius: 4px;
+             border: 2px dashed #4e4845;
+             display: inline-block;
+             cursor: pointer;
+             color: #010304;
+             background-color: #fff;
+             font-family: Arial;
+             font-size: 22px;
+             font-weight: bold;
+             padding: 6px 29px;
+             text-decoration: none;
+             font-size: 20px;
+             align-items: center;
+             width: 33%;
+             height: 30vw;
+         }
 
+        .klbt:hover {
+            background-color: #ff9966;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        .klbt:active {
+            position: relative;
+            top: 1px;
+        }
     </style>
     <script type="text/javascript">
         var user = '${sessionScope.user}';
@@ -81,23 +112,23 @@
                 <div class="search-history hide" id="history">
                     <span>我的搜索历史</span>
                     <ul class="transition" id="history_ul">
-                        <li class="transition"><a href="#">数码</a></li>
-                        <li class="transition"><a href="#">科技</a></li>
+                        <li class="transition"><a href="#">陈海</a></li>
+                        <li class="transition"><a href="#">热血</a></li>
                         <li class="transition"><a href="#">科技</a></li>
                         <li class="transition"><a href="#">互联网</a></li>
-                        <li class="transition"><a href="#">汽车之家</a></li>
+                        <li class="transition"><a href="#">侯亮平</a></li>
                     </ul>
                     <div class="pull-right empty-history js-empty-history">清空历史</div>
                 </div>
                 <div class="search-history search-hot">
                     <strong>热搜词</strong>
                     <ul>
-                        <li class="transition"><a href="#" style="display:block;">数码</a></li>
+                        <li class="transition"><a href="#" style="display:block;">陈海</a></li>
+                        <li class="transition"><a href="#" style="display:block;">热血</a></li>
                         <li class="transition"><a href="#" style="display:block;">科技</a></li>
-                        <li class="transition"><a href="#" style="display:block;">创业</a></li>
                         <li class="transition"><a href="#" style="display:block;">旅游</a></li>
                         <li class="transition"><a href="#" style="display:block;">美团</a></li>
-                        <li class="transition"><a href="#" style="display:block;">社交</a></li>
+                        <li class="transition"><a href="#" style="display:block;">侯亮平</a></li>
                     </ul>
                 </div>
             </div>
@@ -176,12 +207,14 @@
                 <li class="user-head js-show-menu">
                     <div class="header-column header-column-user menu-box" id="detail"
                          style="opacity: 1; margin-top: 60px; padding-top:1px!important; ">
-                        <a class="transition" href="${path}/tomyself">个人中心
+                        <a class="transition" href="${path}/tomyself" target="_blank">个人中心
                         </a>
-
+                        <a class="transition" href="${path}/totree">我的文件树
+                        </a>
                         <a class="transition">系统消息
                             <span class="badge comment_message">1</span>
                         </a>
+
                         <a class="transition js-btn-logout" id="exit" href="${path}/exit">退出
                         </a>
                     </div>
@@ -194,7 +227,7 @@
 
                 </li>
             </c:if>
-            <li><a class="cd-tougao" id="tougao" target="_self">投稿</a></li>
+            <li><a class="cd-tougao" style="background-color: #e19d5e" href="#ThreeKind" data-toggle="modal">上传</a></li>
         </ul>
     </div>
     <div class="cd-user-modal">
@@ -221,7 +254,7 @@
                                         class="icon-modal icon-l-caret"></i></a>
                                 <div class="login-operation">
                                     <label><input id="autologin" type="checkbox">&nbsp;2周内自动登录</label>
-                                    <a href="/user/reset_password" class="js-forget-passward pull-right">忘记密码</a>
+                                    <a href="#" class="js-forget-passward pull-right">忘记密码</a>
                                 </div>
                                 <input class="js-btn-login btn-login" type="submit"/>
                             </form>
@@ -424,10 +457,83 @@
         </div>
     </div>
 </header>
+
+<div class="modal fade" id="ThreeKind" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 70vw">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新建知识
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="button1" class="klbt" style="margin: 0 auto">
+                    <p >知识类型一</p>
+                    <h4 style="margin-top: 25px">适用于上传多附件以及说明文档的知识</h4>
+                    <div style="margin: auto 0;height: 70%; text-align: center;" >
+                        <i class="glyphicon glyphicon-file" style="top: 50%;float: left;font-size: 400%"></i>
+                        <i class=" glyphicon glyphicon-plus" style="top: 50%;float: none;font-size: 200%"></i>
+                        <i class="glyphicon glyphicon-folder-open" style="top: 50%;float: right;font-size: 400%"></i>
+                    </div>
+
+                </div>
+                <div id="button2" class="klbt">
+                    <p>知识类型二</p>
+                    <h4 style="margin-top: 25px">适用于上传多视频以及说明文档的知识</h4>
+                    <div style="margin: auto 0;height: 70%; text-align: center;" >
+                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: left;font-size: 400%"></i>
+                        <i class=" glyphicon glyphicon-plus" style="top: 50%;float: none;font-size: 200%"></i>
+                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: right;font-size: 400%"></i>
+                    </div>
+                </div>
+                <div id="button3" class="klbt">
+                    <p>知识类型三</p>
+                    <h4 style="margin-top: 25px">适用于上传多视频以及多附件的知识</h4>
+                    <div style="margin: auto 0;height: 70%; text-align: center;" >
+                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: left;font-size: 400%"></i>
+                        <i class=" glyphicon glyphicon-plus" style="top: 50%;float: none;font-size: 200%"></i>
+                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: right;font-size: 400%"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 <script src="${path}/resource/js/d-login.js"></script>
 <script language="javascript" type="text/javascript" src="${path}/resource/js/main.js"></script>
 <script language="javascript" type="text/javascript" src="${path}/resource/js/popwin.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var bt1 = document.getElementById('button1');
+        var bt2 = document.getElementById('button2');
+        var bt3 = document.getElementById('button3');
 
+        bt1.onclick = function (e) {
+//            alert("1");
+            window.location.href = "${path}/tosub";
+        };
+        bt2.onclick = function (e) {
+//            alert("2");
+            window.location.href = "${path}/tosub2";
+
+        };
+        bt3.onclick = function (e) {
+//            alert("31");
+            window.location.href = "${path}/tosub3";
+
+        }
+
+    });
+
+</script>
 <script>
     //Global:
     var pro = 0;

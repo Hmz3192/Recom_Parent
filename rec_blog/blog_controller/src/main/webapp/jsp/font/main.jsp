@@ -676,7 +676,7 @@
     <div class="wrap-right pull-right">
         <div class="right-ad-box"></div>
         <div class="box-moder moder-project-list promote-box">
-            <h3>新鲜事</h3>
+            <h3>新鲜知识</h3>
             <span class="span-mark"></span>
             <ul>
                 <li>
@@ -726,7 +726,7 @@
         </div>
         <div id="moment"></div>
         <div class="box-moder hot-article">
-            <h3>实时热文</h3>
+            <h3>最新知识</h3>
             <span class="pull-right project-more story-more">
             <a href="#" class="transition" target="_blank">查看全部</a></span>
             <span class="span-mark"></span>

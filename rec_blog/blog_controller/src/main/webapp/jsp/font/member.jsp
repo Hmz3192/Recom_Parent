@@ -399,8 +399,8 @@
                     wg = data.wg,
                     cg = data.cg
                 $('#span1').text("已发布 (" + yf + ")");
-                $('#span2').text("未通过 (" + wg + ")");
-                $('#span3').text("审核中 (" + sh + ")");
+                $('#span2').text("未通过 (" + sh + ")");
+                $('#span3').text("审核中 (" + wg + ")");
                 $('#span4').text("草稿箱 (" + cg + ")");
             });
         }

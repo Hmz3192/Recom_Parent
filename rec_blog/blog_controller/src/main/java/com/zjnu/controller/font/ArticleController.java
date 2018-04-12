@@ -8,8 +8,11 @@ import com.zjnu.pojo.*;
 import com.zjnu.recom.booleanrec.BooleaReco;
 import com.zjnu.redis.JedisUtil;
 import com.zjnu.service.*;
+import com.zjnu.utils.ConvertSwfUtil;
+import com.zjnu.utils.StringUtil;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +22,9 @@ import com.zjnu.recom.common.ItemSimilarity;
 import com.zjnu.recom.youkeRec.BasedItemRec;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -45,6 +50,34 @@ public class ArticleController {
 
     @Resource
     private ArticleService articleService;
+
+
+    /*在线浏览*/
+    @RequestMapping("/toReadOnline/{kind}")
+    public String toReadOnline(@PathVariable("kind") Integer kind, HttpServletRequest request, HttpSession session) {
+
+        String path = request.getServletContext().getRealPath("");
+        String filePath = "";
+        if (kind == 1) {
+            filePath = "/attached/file/docx.docx";
+        } else if (kind == 2) {
+            filePath = "/attached/file/pdf.pdf";
+        }else if (kind == 3) {
+            filePath = "/attached/file/word.doc";
+        }else if (kind == 4) {
+            filePath = "/attached/file/xls.xls";
+        }
+        String wholePath = path + filePath;
+        String fileName = StringUtil.getFileNameOnly(filePath);
+        String outPutPath = request.getServletContext().getRealPath("/") + "attached/";
+        String outPath = new ConvertSwfUtil().beginConvert(outPutPath, wholePath, fileName);
+        System.out.println("生成swf文件:" + outPath);
+        File swfFile = new File(outPath);
+//        swfPath = swfFile.getName();
+        System.out.println(swfFile.getName());
+        session.setAttribute("swfPath", swfFile.getName());
+        return "font/readFile";
+    }
 
     @RequestMapping("/rec/{userId}")
     @ResponseBody

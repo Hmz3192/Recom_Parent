@@ -26,13 +26,34 @@ jQuery(document).ready(function($){
             $("#survery").css('display','block');
             signup_selected()
         });
-        $tougao.on('click',function (eve) {
+       /* $tougao.on('click',function (eve) {
             if(user == null || user.length == 0) {
                 toast("提醒","请先登录","warning");
                 return false;
             }else
-                window.location.href="http://192.168.222.129:8111/tosub"
-        });
+            {
+                var bt1 = document.getElementById('button1');
+                var bt2 = document.getElementById('button2');
+                var bt3 = document.getElementById('button3');
+
+                bt1.onclick = function (e) {
+//            alert("1");
+                    window.location.href = "${path}/Page_tocreate1.action";
+                };
+                bt2.onclick = function (e) {
+//            alert("2");
+                    window.location.href = "${path}/Page_tocreate2.action";
+
+                };
+                bt3.onclick = function (e) {
+//            alert("31");
+                    window.location.href = "${path}/Page_tocreate3.action";
+
+                }
+                window.location.href="http://localhost:8111/tosub"
+            }
+
+        });*/
     //弹出窗口
    /* $main_nav.on('click', function(event){
 

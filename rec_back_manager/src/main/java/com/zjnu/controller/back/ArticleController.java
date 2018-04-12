@@ -47,12 +47,15 @@ public class ArticleController {
     }
         //单个文件建立索引，同意建立索引
     @RequestMapping("/addIndex/{articleId}")
-    public String checkIndex(@PathVariable("articleId") Integer articleId) throws Exception {
+    public String checkIndex(@PathVariable("articleId") Integer articleId,HttpServletRequest request) throws Exception {
         solrService = getService();
         Article article = articleService.getOneById(articleId);
         User oneById = userService.getOneById(article.getUserId());
         articleService.updateIndex(article);
-        List<Map<String, Object>> indexData = StringUtil.prepareIndexData(article,oneById);
+
+        String path = request.getServletContext().getRealPath("");
+
+        List<Map<String, Object>> indexData = StringUtil.prepareIndexData(article,oneById,path);
         FullTextIndexParams fullTextIndexParams = new FullTextIndexParams();
         fullTextIndexParams.setIndexData(indexData);
         solrService.doIndex(fullTextIndexParams);
@@ -86,8 +89,30 @@ public class ArticleController {
         return "redirect:/article/1/10";
     }
 
+    //建立索引添加测试数据
+    @RequestMapping("/testIndex")
+    @ResponseBody
+    public String testIndex(HttpServletRequest request) throws Exception {
+        int i = 0;
+        while (i < 50) {
+            i++;
+        solrService = getService();
+        Article article = articleService.getOneById(i);
+        User oneById = userService.getOneById(article.getUserId());
+        articleService.updateIndex(article);
 
-    @RequestMapping("/article/{currentPage}/{rows}")
+        String path = request.getServletContext().getRealPath("");
+
+        List<Map<String, Object>> indexData = StringUtil.prepareIndexData(article, oneById, path);
+        FullTextIndexParams fullTextIndexParams = new FullTextIndexParams();
+        fullTextIndexParams.setIndexData(indexData);
+        solrService.doIndex(fullTextIndexParams);
+        }
+        return "ok";
+    }
+
+
+        @RequestMapping("/article/{currentPage}/{rows}")
     public String article(Model model, @PathVariable("currentPage") Integer currentPage,@PathVariable("rows") Integer rows) {
         PageHelper.startPage(currentPage, rows);
         List<Article> allSend = articleService.getAllSend();

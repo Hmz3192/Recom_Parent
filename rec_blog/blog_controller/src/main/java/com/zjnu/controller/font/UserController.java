@@ -100,6 +100,11 @@ public class UserController {
         return "font/member";
     }
 
+    @RequestMapping("/totree")
+    public String totree() {
+        return "tree";
+    }
+
     @RequestMapping("/tosub")
     public String tosub(Model model) {
         Integer GenArticleId = IDUtils.genIntegerId();

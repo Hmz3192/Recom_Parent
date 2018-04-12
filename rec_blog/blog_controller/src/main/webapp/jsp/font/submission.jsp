@@ -36,6 +36,8 @@
     <link rel="stylesheet" href="${path}/resource/kindEditor/themes/default/default.css"/>
     <link rel="stylesheet" href="${path}/resource/kindEditor/plugins/code/prettify.css"/>
     <link rel="stylesheet" type="text/css" href="${path}/resource/model/zeroModal.css" />
+    <link rel="stylesheet" type="text/css" href="${path}/resource/vediouploader/webuploader.css">
+
 
     <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 
@@ -655,6 +657,42 @@
                                 <input type="text" class="form-control" style="width: 300px;" name="writeSource"
                                        placeholder="请输入来源，如所属企业，作者名等"/>
                             </fieldset>
+                            <fieldset>
+                                <legend>视屏上传</legend>
+                                <div class="collapse in">
+                                    <!--start -->
+                                    <div id="uploader">
+                                        <!--用来存放文件信息-->
+                                        <div id="thelist">
+                                            <div class="panel panel-primary">
+                                                <table class="table table-striped table-bordered"
+                                                       id="uploadTable">
+                                                    <thead>
+                                                    <tr>
+                                                        <th style="width: 5%">序号</th>
+                                                        <th style="width: 40%">文件名称</th>
+                                                        <th style="width: 8%">文件大小</th>
+                                                        <th style="width: 10%">上传状态</th>
+                                                        <th style="width: 20%">上传进度</th>
+                                                        <th style="width: 17%">操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                                <div class="panel-footer">
+                                                            <span style="width: 100px">
+                                                            <div id="picker">选择文件</div>
+                                                                </span>
+                                                    <span style="width: 100px">
+
+                                                            <button id="btn" class="btn btn-default">开始上传</button>
+                                                                </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
                             <!--<input type="submit" name="button" value="提交内容"/> (提交快捷键: Ctrl + Enter)-->
                             <br>
                             <fieldset>
@@ -706,9 +744,6 @@
 <!--页脚-->
 <%@include file="footer.jsp" %>
 
-<!--<script language="javascript" type="text/javascript" src="${path}/resource/js/jquery-1.11.1.min.js"/>-->
-<!--<script language="javascript" type="text/javascript" src="${path}/resource/js/main.js"></script>
-<script language="javascript" type="text/javascript" src="${path}/resource/js/popwin.js"></script>-->
 <script src="${path}/resource/jc/jcjc_js_api.js"></script>
 <!--kindEditor-->
 
@@ -724,6 +759,9 @@
 <!--tag标签-->
 <script type="text/javascript" src="${path}/resource/js/bootstrap-tagsinput.js"></script>
 <script language="javascript" type="text/javascript" src="${path}/resource/webUpload/easyUpload.js"></script>
+
+<script type="text/javascript" src="${path}/resource/vediouploader/webuploader.js"></script>
+<script type="text/javascript" src="${path}/resource/vediouploader/hashmap.js"></script>
 <script>
     $('#easyContainer').easyUpload({
         allowFileTypes: '*.jpg;*.doc;*.pdf',//允许上传文件类型，格式';*.doc;*.pdf'
@@ -750,6 +788,211 @@
         }//删除文件回调函数
     });
 
+</script>
+<script>
+    $(function() {
+        var fileMd5;
+        var fileSuffix;
+        var $list = $("#thelist table>tbody");
+        var state = 'pending';//初始按钮状态
+        var $btn = $("#btn");
+        var count = 0;
+        var map = new HashMap();
+        //监听分块上传过程中的三个时间点
+        WebUploader.Uploader.register({
+            "before-send-file": "beforeSendFile",
+            "before-send": "beforeSend",
+            "after-send-file": "afterSendFile",
+        }, {
+            //时间点1：所有分块进行上传之前调用此函数
+            beforeSendFile: function (file) {
+                var deferred = WebUploader.Deferred();
+                //1、计算文件的唯一标记，用于断点续传
+                (new WebUploader.Uploader()).md5File(file, 0, 1000 * 1024 * 1024)
+                    .progress(function (percentage) {
+                        $('#' + file.id).find("td.state").text("正在读取文件信息...");
+                    }).then(function (val) {
+                    fileMd5 = val;
+                    $('#' + file.id).find("td.state").text("成功获取文件信息...");
+                    //获取文件信息后进入下一步
+                    deferred.resolve();
+                });
+                return deferred.promise();
+            },
+            //时间点2：如果有分块上传，则每个分块上传之前调用此函数
+            beforeSend: function (block) {
+                var deferred = WebUploader.Deferred();
+
+                $.ajax({
+                    type: "POST",
+                    url: "#",
+                    data: {
+                        //文件唯一标记
+                        fileMd5: fileMd5,
+                        //当前分块下标
+                        chunk: block.chunk,
+                        //当前分块大小
+                        chunkSize: block.end - block.start
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.ifExist) {
+                            //分块存在，跳过
+                            deferred.reject();
+                        } else {
+                            //分块不存在或不完整，重新发送该分块内容
+                            deferred.resolve();
+
+                        }
+                    }
+                });
+
+                this.owner.options.formData.fileMd5 = fileMd5;
+                deferred.resolve();
+                return deferred.promise();
+            },
+            //时间点3：所有分块上传成功后调用此函数
+            afterSendFile: function () {
+                //如果分块上传成功，则通知后台合并分块
+                $.ajax({
+                    type: "POST",
+                    url: "#",
+                    data: {
+                        fileMd5: fileMd5,
+                        fileSuffix: fileSuffix,
+                    },
+                    success: function (response) {
+                        finishState = 1;
+                    }
+                });
+            }
+        });
+
+        var uploader = WebUploader
+            .create({
+                // swf文件路径
+                swf: '${path}/resource/vediouploader/Uploader.swf',
+                // 文件接收服务端。
+                server: '#',
+                // 选择文件的按钮。可选。
+                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                pick: {
+                    id: '#picker',//这个id是你要点击上传文件的id
+                    multiple: true
+                },
+                // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+                resize: true,
+                auto: false,
+                //开启分片上传
+                chunked: true,
+                chunkSize: 1000 * 1024 * 1024,
+
+                accept: {
+                    extensions: "rm,rmvb,wmv,avi,mp4,3gp,mkv,flv",
+                    mimeTypes: '.rm,.rmvb,wmv,.avi,.mp4,.3gp,.mkv,.flv'
+                }
+            });
+
+        // 当有文件被添加进队列的时候
+        uploader.on('fileQueued', function (file) {
+            //保存文件扩展名
+            fileSuffix = file.ext;
+            var fileSize = file.size;
+            var fileSizeStr = "";
+            /* if(fileSize/1024<1024){
+             fileSize=fileSize/1024;
+             fileSizeStr=fileSize.toFixed(2)+"KB";
+             }else if(fileSize/1024/1024<1024){
+             fileSize=fileSize/1024/1024;
+             fileSizeStr=fileSize.toFixed(2)+"MB";
+             }else if(fileSize/1024/1024/1024<1024){
+             fileSize=fileSize/1024/1024/1024;
+             fileSizeStr=fileSize.toFixed(2)+"GB";
+             }else{
+             fileSize=fileSize/1024/1024/1024/1024;
+             fileSizeStr=fileSize.toFixed(2)+"T";
+             } */
+            fileSizeStr = WebUploader.Base.formatSize(fileSize);
+            count++;
+            $list.append(
+                '<tr id="' + file.id + '" class="item" flag=0>' +
+                '<td class="index">' + count + '</td>' +
+                '<td class="info">' + file.name + '</td>' +
+                '<td class="size">' + fileSizeStr + '</td>' +
+                '<td class="state">等待上传...</td>' +
+                '<td class="percentage"></td>' +
+                '<td class="operate"><button name="upload" class="btn btn-warning">开始</button><button name="delete" class="btn btn-error">删除</button></td></tr>');
+            map.put(file.id + "", file);
+        });
+
+        // 文件上传过程中创建进度条实时显示。
+        uploader.on('uploadProgress', function (file, percentage) {
+            $('#' + file.id).find('td.percentage').text(
+                '上传中 ' + Math.round(percentage * 100) + '%');
+        });
+
+        uploader.on('uploadSuccess', function (file) {
+            $('#' + file.id).find('td.state').text('已上传');
+        });
+
+        uploader.on('uploadError', function (file) {
+            $('#' + file.id).find('td.state').text('上传出错');
+        });
+
+        uploader.on('uploadComplete', function (file) {
+            uploader.removeFile(file);
+        });
+
+
+        uploader.on('all', function (type) {
+            if (type === 'startUpload') {
+                state = 'uploading';
+            } else if (type === 'stopUpload') {
+                state = 'paused';
+            } else if (type === 'uploadFinished') {
+                state = 'done';
+            }
+
+            if (state === 'uploading') {
+                $btn.text('暂停上传');
+            } else {
+                $btn.text('开始上传');
+            }
+        });
+
+        $btn.on('click', function () {
+            if (state === 'uploading') {
+                uploader.stop(true);
+            } else {
+                uploader.upload();
+            }
+        });
+
+        $("body").on("click", "#uploadTable button[name='upload']", function () {
+            flag = $(this).parents("tr.item").attr("flag") ^ 1;
+            $(this).parents("tr.item").attr("flag", flag);
+            var id = $(this).parents("tr.item").attr("id");
+            if (flag == 1) {
+                $(this).text("暂停");
+                uploader.upload(uploader.getFile(id, true));
+
+            } else {
+                $(this).text("开始");
+                //uploader.stop(true);
+                uploader.stop(uploader.getFile(id, true));
+                //uploader.skipFile(file);
+                //uploader.removeFile(file);
+                //uploader.getFile(id,true);
+            }
+        });
+
+        $("body").on("click", "#uploadTable button[name='delete']", function () {
+            var id = $(this).parents("tr.item").attr("id");
+            $(this).parents("tr.item").remove();
+            uploader.removeFile(uploader.getFile(id, true));
+            map.remove(id);
+        });
+    })
 </script>
 <script type='text/javascript'>
     //非视频，不加载播放器

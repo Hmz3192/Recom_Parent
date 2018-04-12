@@ -39,6 +39,12 @@ public class StringUtil {
         }
     }
 
+    public static String getFileNameOnly(String s1) {
+        String[] s2 = s1.split("/");
+        String fileNameOnly = s2[s2.length - 1];
+        return fileNameOnly;
+    }
+
     /**
      * 从文件的完整路径中，抽取其文件名称
      *
