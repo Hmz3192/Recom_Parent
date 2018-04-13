@@ -44,7 +44,7 @@
                 //请求方式
                 type: 'POST',
                 //参数
-                data: {currentPage: 1, rows: 5},
+                data: {currentPage: currentPage, rows: rows},
                 //成功回调
                 success: function (data) {
                     currentPage++;

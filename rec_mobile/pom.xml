@@ -910,6 +910,22 @@
             </exclusions>
         </dependency>
 
+        <!--文件转换-->
+        <!-- https://mvnrepository.com/artifact/com.artofsolving/jodconverter-maven-plugin -->
+        <!--pom 没有2.2.2的版本，2,2,1版本不支持年度早的xlsx、docx、pptx格式的文档转换pdt-->
+        <!--这里是自定义的依赖，网上是没有的-->
+        <dependency>
+            <groupId>jodconverter</groupId>
+            <artifactId>jodconverter-maven-plugin</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <!--这里是自定义的依赖，网上是没有的，这个和上一个包我放在资源文件中，导入报错后，放在maven仓库下，/repository即可-->
+        <dependency>
+            <groupId>jodconverter</groupId>
+            <artifactId>jodconverter-cli</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>

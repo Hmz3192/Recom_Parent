@@ -214,6 +214,22 @@
                 <div class="author-position">${articleDetail.user.introduction}</div>
             </a>
         </div>
+        <div class="author-dy-wrap">
+            <div class="author-position" style="float: left">附件列表</div>
+            <br>
+            <div class="list-group" style="padding: 5px">
+                <a href="${path}/toReadOnline/1"
+                   target="_blank">docx.docx</a>
+                <a href="${path}/toReadOnline/2"
+                   target="_blank">pdf.pdf</a>
+                <a href="${path}/toReadOnline/3"
+                   target="_blank">word.doc</a>
+                <a href="${path}/toReadOnline/4"
+                   target="_blank">xls.xls</a>
+                <a href="${path}/toReadOnline/4"
+                   target="_blank">xls.xlsx</a>
+            </div>
+        </div>
         <div class="share-box article-content-share">
             <div class="article-btn-group fr">
                 <ul>

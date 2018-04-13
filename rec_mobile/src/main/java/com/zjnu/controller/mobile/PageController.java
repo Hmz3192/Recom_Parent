@@ -18,6 +18,7 @@ import com.zjnu.pojo.PageResult;
 import com.zjnu.redis.JedisUtil;
 import com.zjnu.service.ArticleService;
 import com.zjnu.service.UserService;
+import com.zjnu.utils.ConvertSwfUtil;
 import com.zjnu.utils.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +52,36 @@ public class PageController {
         JedisUtil.getJedis().flushDB();
         return "清楚成功";
     }
+
+
+
+    /*在线浏览*/
+    @RequestMapping("/toReadOnline/{kind}")
+    public String toReadOnline(@PathVariable("kind") Integer kind, HttpServletRequest request, HttpSession session) {
+
+        String path = request.getServletContext().getRealPath("");
+        String filePath = "";
+        if (kind == 1) {
+            filePath = "/attached/file/docx.docx";
+        } else if (kind == 2) {
+            filePath = "/attached/file/pdf.pdf";
+        }else if (kind == 3) {
+            filePath = "/attached/file/word.doc";
+        }else if (kind == 4) {
+            filePath = "/attached/file/xls.xls";
+        }
+        String wholePath = path + filePath;
+        String fileName = StringUtil.getFileNameOnly(filePath);
+        String outPutPath = request.getServletContext().getRealPath("/") + "attached/";
+        String outPath = new ConvertSwfUtil().beginConvert(outPutPath, wholePath, fileName);
+        System.out.println("生成swf文件:" + outPath);
+        File swfFile = new File(outPath);
+//        swfPath = swfFile.getName();
+        System.out.println(swfFile.getName());
+        session.setAttribute("swfPath", swfFile.getName());
+        return "mobile/readFile";
+    }
+
 
     @RequestMapping("/m")
     public String main() {
@@ -140,7 +174,7 @@ public class PageController {
 	
 	 //android查找2
     @RequestMapping("/mSearch")
-    public String mS(String query, Model model) {
+    public String mS2(String query, Model model) {
         beginService();
         FullTextSearchParams fullTextSearchParams = new FullTextSearchParams();
         fullTextSearchParams.setQueryWord(query);

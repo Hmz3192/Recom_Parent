@@ -18,6 +18,12 @@ public class StringUtil {
         getAllPath(inputPath);
     }
 
+    public static String getFileNameOnly(String s1) {
+        String[] s2 = s1.split("/");
+        String fileNameOnly = s2[s2.length - 1];
+        return fileNameOnly;
+    }
+
     /**
      * 递归获取文件夹下所有的文件绝对路径
      *
