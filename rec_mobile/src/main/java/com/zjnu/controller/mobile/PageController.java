@@ -132,6 +132,11 @@ public class PageController {
         return "mobile/marticle";
     }
 
+    @RequestMapping("/toms")
+    public String toms() {
+        return "mobile/search";
+    }
+
     //android查找
     @RequestMapping("/mS/{query}")
     public String mS(@PathVariable("query") String query, Model model) {
