@@ -95,6 +95,12 @@ public class UserController {
 
         return "font/main";
     }
+
+    @RequestMapping("/tofilemanager")
+    public String tofilemanager() {
+        return "font/filemanager";
+    }
+
     @RequestMapping("/tomyself")
     public String member() {
         return "font/member";

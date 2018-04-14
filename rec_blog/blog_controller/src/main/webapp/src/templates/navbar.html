@@ -11,22 +11,33 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <div class="navbar-form navbar-right">
+
+
         <input type="text" class="form-control input-sm hide" placeholder="{{'search' | translate}}..." ng-model="$parent.query">
+
         <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#newfolder" ng-click="touch()">
             <i class="glyphicon glyphicon-plus"></i> {{"create_folder" | translate}}
         </button>
+
+        <a href="/tofilemanager"><button id="infoshow" class="btn btn-default btn-sm " data-toggle="modal" data-target="#url-qrcode" ng-show="config.allowedActions.qrcode" ng-click="touch();genQRcode();">
+          <i class="glyphicon glyphicon-info-sign "></i> {{"qrcode" | translate}}
+        </button></a>
+
         <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#uploadfile" ng-show="config.allowedActions.upload" ng-click="touch();clearUploadFileList()">
             <i class="glyphicon glyphicon-upload"></i> {{"upload_file" | translate}}
         </button>
 
-      <!--    <button id="infoshow" class="btn btn-default btn-sm " data-toggle="modal" data-target="#url-qrcode" ng-show="config.allowedActions.qrcode" ng-click="touch();genQRcode();">
-              <i class="glyphicon glyphicon-info-sign "></i> {{"qrcode" | translate}}
-          </button>
 
 
-        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropDownMenuLang" data-toggle="dropdown" aria-expanded="true">
-            <i class="glyphicon glyphicon-globe"></i> {{"language" | translate}} <span class="caret"></span>
-        </button>-->
+
+        <!--    <button id="infoshow" class="btn btn-default btn-sm " data-toggle="modal" data-target="#url-qrcode" ng-show="config.allowedActions.qrcode" ng-click="touch();genQRcode();">
+                <i class="glyphicon glyphicon-info-sign "></i> {{"qrcode" | translate}}
+            </button>
+
+
+          <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropDownMenuLang" data-toggle="dropdown" aria-expanded="true">
+              <i class="glyphicon glyphicon-globe"></i> {{"language" | translate}} <span class="caret"></span>
+          </button>-->
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropDownMenuLang">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="changeLanguage('cn')">{{"chinese" | translate}}</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="changeLanguage('en')">{{"english" | translate}}</a></li>
@@ -44,3 +55,5 @@
     </div>
   </div>
 </nav>
+
+

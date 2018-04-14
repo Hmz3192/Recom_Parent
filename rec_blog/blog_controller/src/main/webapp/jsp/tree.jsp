@@ -14,6 +14,8 @@
     <meta charset="utf-8">
     <title>在线文件管理</title>
 
+
+
     <!-- third party -->
     <script src="${path}/bower_components/angular/angular.min.js"></script>
     <script src="${path}/bower_components/angular-translate/angular-translate.min.js"></script>
@@ -46,6 +48,9 @@
     <script src="${path}/src/js/controllers/main.js" type="text/javascript"></script>
     <script src="${path}/src/js/controllers/selector-controller.js" type="text/javascript"></script>
     <script src="${path}/custom/js/custom.js" type="text/javascript" type="text/javascript"></script>
+
+
+
 
     <link href="${path}/src/css/animations.css" rel="stylesheet">
     <link href="${path}/src/css/dialogs.css" rel="stylesheet">

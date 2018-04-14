@@ -11,7 +11,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>知木</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css" media="screen">
         html, body {

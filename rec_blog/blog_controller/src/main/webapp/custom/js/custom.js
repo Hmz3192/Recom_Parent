@@ -30,7 +30,7 @@ angular.module('FileManagerApp').config(['$translateProvider', function($transla
         cancel: '取消',
         close: '关闭',
         upload_file: '上传',
-        qrcode: '二维码',
+        qrcode: '文件树管理',
         files_will_uploaded_to: '文件会被上传到',
         uploading: '上传中',
         permissions: '权限',

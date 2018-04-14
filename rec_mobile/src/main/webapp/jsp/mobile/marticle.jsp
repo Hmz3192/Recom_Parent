@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>NewsPro</title>
+    <title>知木</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -147,6 +147,22 @@
                 </div>
                 <div class="author-position">${articleDetail.user.introduction}</div>
             </a>
+        </div>
+        <div class="author-dy-wrap">
+            <div class="author-position" style="float: left">附件列表</div>
+            <br>
+            <div class="list-group" style="padding: 5px">
+                <a href="${path}/toReadOnline/1"
+                   target="_blank">docx.docx</a>
+                <a href="${path}/toReadOnline/2"
+                   target="_blank">pdf.pdf</a>
+                <a href="${path}/toReadOnline/3"
+                   target="_blank">word.doc</a>
+                <a href="${path}/toReadOnline/4"
+                   target="_blank">xls.xls</a>
+                <a href="${path}/toReadOnline/4"
+                   target="_blank">xls.xlsx</a>
+            </div>
         </div>
         <div class="share-box article-content-share">
             <div class="article-btn-group fr">
