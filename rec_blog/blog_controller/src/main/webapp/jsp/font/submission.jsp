@@ -620,6 +620,24 @@
                             </fieldset>
                             <br>
                             <fieldset>
+                                <legend>文件位置</legend>
+                                <div class="controls">
+                                    <select class="span2 m-wrap"
+                                            style="border-radius:5px;border: 1px solid #000; outline:none;"
+                                            name="pKind">
+                                            <option value="">请选择...</option>
+                                            <option>data</option>
+                                    </select>
+                                    <select class="span2 m-wrap"
+                                            style="border-radius:5px;border: 1px solid #000; outline:none;"
+                                            name="cKind">
+                                            <option value="">请选择...</option>
+                                        <option>file1</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <br>
+                            <fieldset>
                                 <legend>简介</legend>
                                 <div class="controls">
                                     <c:if test="${articlePO.article.articleSummary != null}">
@@ -1006,7 +1024,7 @@
     /*uploadPic*/
     document.documentElement.style.fontSize = document.documentElement.clientWidth * 0.1 + 'px';
 
-    /*  var options = {
+      var options = {
      path: '/saveBlogAvatar',
      onSuccess: function (res) {
      console.log(res);
@@ -1014,7 +1032,7 @@
      onFailure: function (res) {
      console.log(res);
      }
-     }*/
+     }
 
     var options2 = {
         path: '${path}/finishBlog',

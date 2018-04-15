@@ -1,15 +1,15 @@
-package com.zjnu.utils;
+package com.zjnu.util;
 
 import info.monitorenter.cpdetector.io.*;
 
 import java.io.File;
 import java.net.Inet4Address;
-import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by zhangjk on 2016/1/19.
  */

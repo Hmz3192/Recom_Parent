@@ -12,8 +12,7 @@ public class ConstantPara {
 
     //敏感词路径
 //    public static final String WordPath = "E:\\WorkSpace\\IdeaWorkSpace\\Recom_Parent\\rec_mobile\\src\\main\\resources\\CensorWords.txt";
-    public static final String WordPath = "/root/java/workSpace/Recom_Parent/rec_mobile/src/main/resources/CensorWords.txt";
-
+    public static final String WordPath = "E:\\WorkSpace\\Idea\\Recom_Parent\\rec_back_manager\\src\\main\\resources\\CensorWords.txt";
 
     //Tree
     public static final String UPLOAD_FOLDER = System.getProperty("webapp.root") + File.separator + "uploadFiles";

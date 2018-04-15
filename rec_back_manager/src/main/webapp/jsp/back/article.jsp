@@ -235,7 +235,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <div class="title">文章管理(提交状态)</div>
+                                    <div class="title">知识管理(提交状态)</div>
                                     <hr>
                                     <i style="font-size: 16px">审核状态：</i>
                                     <button type="button" class="btn btn-default"><a href="${path}/state/0/1/10">未审核</a>

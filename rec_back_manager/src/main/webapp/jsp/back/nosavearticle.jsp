@@ -235,7 +235,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <div class="title">文章管理(保存状态)</div>
+                                    <div class="title">知识管理(保存状态)</div>
 
                                     <hr>
                                     <i style="font-size: 16px">总共有：<em

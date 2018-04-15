@@ -169,7 +169,7 @@
         </div>
         <ul class="nav navbar-nav navbar-left" id="jsddm">
             <li class="nav-news js-show-menu">
-                <a href="${path}/f">资讯 <span class="caret"></span></a>
+                <a href="${path}/f">知识 <span class="caret"></span></a>
                 <ul id="kindList">
                 </ul>
             </li>
@@ -227,7 +227,7 @@
 
                 </li>
             </c:if>
-            <li><a class="cd-tougao" style="background-color: #e19d5e" href="#ThreeKind" data-toggle="modal">上传</a></li>
+            <li><a class="cd-tougao" style="background-color: #e19d5e"  >上传</a></li>
         </ul>
     </div>
     <div class="cd-user-modal">
@@ -458,82 +458,9 @@
     </div>
 </header>
 
-<div class="modal fade" id="ThreeKind" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 70vw">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-hidden="true">×
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    新建知识
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div id="button1" class="klbt" style="margin: 0 auto">
-                    <p >知识类型一</p>
-                    <h4 style="margin-top: 25px">适用于上传多附件以及说明文档的知识</h4>
-                    <div style="margin: auto 0;height: 70%; text-align: center;" >
-                        <i class="glyphicon glyphicon-file" style="top: 50%;float: left;font-size: 400%"></i>
-                        <i class=" glyphicon glyphicon-plus" style="top: 50%;float: none;font-size: 200%"></i>
-                        <i class="glyphicon glyphicon-folder-open" style="top: 50%;float: right;font-size: 400%"></i>
-                    </div>
-
-                </div>
-                <div id="button2" class="klbt">
-                    <p>知识类型二</p>
-                    <h4 style="margin-top: 25px">适用于上传多视频以及说明文档的知识</h4>
-                    <div style="margin: auto 0;height: 70%; text-align: center;" >
-                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: left;font-size: 400%"></i>
-                        <i class=" glyphicon glyphicon-plus" style="top: 50%;float: none;font-size: 200%"></i>
-                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: right;font-size: 400%"></i>
-                    </div>
-                </div>
-                <div id="button3" class="klbt">
-                    <p>知识类型三</p>
-                    <h4 style="margin-top: 25px">适用于上传多视频以及多附件的知识</h4>
-                    <div style="margin: auto 0;height: 70%; text-align: center;" >
-                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: left;font-size: 400%"></i>
-                        <i class=" glyphicon glyphicon-plus" style="top: 50%;float: none;font-size: 200%"></i>
-                        <i class="glyphicon glyphicon-asterisk" style="top: 50%;float: right;font-size: 400%"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">关闭
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
 <script src="${path}/resource/js/d-login.js"></script>
 <script language="javascript" type="text/javascript" src="${path}/resource/js/main.js"></script>
 <script language="javascript" type="text/javascript" src="${path}/resource/js/popwin.js"></script>
-<script type="text/javascript">
-    $(function () {
-        var bt1 = document.getElementById('button1');
-        var bt2 = document.getElementById('button2');
-        var bt3 = document.getElementById('button3');
-
-        bt1.onclick = function (e) {
-//            alert("1");
-            window.location.href = "${path}/tosub";
-        };
-        bt2.onclick = function (e) {
-//            alert("2");
-            window.location.href = "${path}/tosub2";
-
-        };
-        bt3.onclick = function (e) {
-//            alert("31");
-            window.location.href = "${path}/tosub3";
-
-        }
-
-    });
-
-</script>
 <script>
     //Global:
     var pro = 0;
