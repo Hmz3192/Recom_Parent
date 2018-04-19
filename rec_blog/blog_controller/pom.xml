@@ -30,6 +30,12 @@
 
         </dependency>
 
+        <dependency>
+            <groupId>cpdetector</groupId>
+            <artifactId>cpdetector</artifactId>
+            <version>1.0.10</version>
+
+        </dependency>
     </dependencies>
     <build>
         <finalName>blog_controller</finalName>

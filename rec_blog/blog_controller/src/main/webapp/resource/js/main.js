@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
                 return false;
             }else
             {
-                window.location.href="http://localhost:8111/tosub"
+                window.location.href="http://101.201.234.133:8111/tosub"
             }
 
         });

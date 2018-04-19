@@ -453,7 +453,12 @@
             </exclusions>
 
         </dependency>
+        <dependency>
+            <groupId>cpdetector</groupId>
+            <artifactId>cpdetector</artifactId>
+            <version>1.0.10</version>
 
+        </dependency>
         <!-- page start-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>

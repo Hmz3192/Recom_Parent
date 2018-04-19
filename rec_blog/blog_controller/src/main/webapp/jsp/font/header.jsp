@@ -227,7 +227,7 @@
 
                 </li>
             </c:if>
-            <li><a class="cd-tougao" style="background-color: #e19d5e"  >上传</a></li>
+            <li><a class="cd-tougao" style="background-color: #e19d5e" href="${path}/tosub"  >上传</a></li>
         </ul>
     </div>
     <div class="cd-user-modal">

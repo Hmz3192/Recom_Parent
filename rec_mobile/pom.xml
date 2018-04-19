@@ -944,7 +944,12 @@
             <artifactId>jodconverter-cli</artifactId>
             <version>2.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>cpdetector</groupId>
+            <artifactId>cpdetector</artifactId>
+            <version>1.0.10</version>
 
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
         <dependency>
