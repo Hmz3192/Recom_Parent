@@ -128,15 +128,15 @@
                         <shiro:hasAnyRoles name="文章管理员,系统管理员">
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon glyphicon glyphicon-list-alt"></span><span class="title">知识管理</span>
+                                    <span class="icon glyphicon glyphicon-list-alt"></span><span class="title">课程管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="${path}/article/1/10" style="text-align: center">知识审核(提交状态)</a>
+                                            <li><a href="${path}/article/1/10" style="text-align: center">课程审核(提交状态)</a>
                                             </li>
-                                            <li><a href="${path}/SaveA/1/10" style="text-align: center">知识管理(保存状态)</a>
+                                            <li><a href="${path}/SaveA/1/10" style="text-align: center">课程管理(保存状态)</a>
                                             </li>
                                             <li><a href="${path}/articleKind" style="text-align: center">类型管理</a>
                                             </li>

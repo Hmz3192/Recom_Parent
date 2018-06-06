@@ -40,8 +40,8 @@
                         <i class="fa fa-bars icon"></i>
                     </button>
                     <ol class="breadcrumb navbar-breadcrumb">
-                        <li>知识管理</li>
-                        <li class="active">知识审核</li>
+                        <li>课程管理</li>
+                        <li class="active">课程审核</li>
                     </ol>
                     <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                         <i class="fa fa-th icon"></i>
@@ -134,15 +134,15 @@
                         <shiro:hasAnyRoles name="文章管理员,系统管理员">
                             <li class="panel panel-default dropdown active">
                                 <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon glyphicon glyphicon-list-alt"></span><span class="title">知识管理</span>
+                                    <span class="icon glyphicon glyphicon-list-alt"></span><span class="title">课程管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="${path}/article/1/10" style="text-align: center">知识审核(提交状态)</a>
+                                            <li><a href="${path}/article/1/10" style="text-align: center">课程审核(提交状态)</a>
                                             </li>
-                                            <li><a href="${path}/SaveA/1/10" style="text-align: center">知识管理(保存状态)</a>
+                                            <li><a href="${path}/SaveA/1/10" style="text-align: center">课程管理(保存状态)</a>
                                             </li>
                                             <li><a href="${path}/articleKind" style="text-align: center">类型管理</a>
                                             </li>
@@ -235,7 +235,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <div class="title">知识管理(提交状态)</div>
+                                    <div class="title">课程管理(提交状态)</div>
                                     <hr>
                                     <i style="font-size: 16px">审核状态：</i>
                                     <button type="button" class="btn btn-default"><a href="${path}/state/0/1/10">未审核</a>
@@ -262,9 +262,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>用户</th>
-                                        <th>知识封面</th>
-                                        <th>知识详情</th>
-                                        <th>知识附件</th>
+                                        <th>课程封面</th>
+                                        <th>课程详情</th>
+                                        <th>课程附件</th>
                                         <th>来源</th>
                                         <th>子类型</th>
                                         <th>点击量</th>
